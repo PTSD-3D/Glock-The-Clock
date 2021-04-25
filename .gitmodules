@@ -1,0 +1,4 @@
+[submodule "PTSD-Engine"]
+	path = PTSD-Engine
+	url = https://github.com/PTSD-3D/PTSD-Engine
+	branch = main
