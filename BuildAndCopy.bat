@@ -1,6 +1,6 @@
 @ECHO OFF
 TITLE Remote Build
-set gameName=TaiFighter
+set gameName=GlockTheClock
 
 :start
 echo.
