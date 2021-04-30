@@ -54,7 +54,7 @@ robocopy %remFolder% bin\ /s /e /NFL /NDL /NJH /NJS /nc /ns /np
 
 echo Copying game files...
 robocopy %gameName%\assets bin\assets /s /e /NFL /NDL /NJH /NJS /nc /ns /np
-robocopy %gameName%\scenes bin\assets\scripts\Client /s /e /NFL /NDL /NJH /NJS /np
+robocopy %gameName%\scripts bin\assets\scripts\Client /s /e /NFL /NDL /NJH /NJS /np
 robocopy %gameName%\prefabs bin\assets\scripts\Client\Prefabs /s /e /NFL /NDL /NJH /NJS /np
 
 echo.
