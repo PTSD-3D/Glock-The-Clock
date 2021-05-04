@@ -1,0 +1,6 @@
+# Dont save bin but assets
+[Bb]in/
+![Bb]in/assets/
+
+# Helper txt file for build.sh
+build_config.txt
