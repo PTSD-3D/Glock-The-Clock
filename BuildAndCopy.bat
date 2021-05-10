@@ -36,11 +36,11 @@ GOTO remoteChoicePrompt
 :build
 echo. && echo Input the filepath for where your engine .sln is located
 set /p engineFolder="Example: C:\User\PTSD-Engine\: "
-set remFodler=%engineFolder%\bin
+set remFolder=%engineFolder%\bin
 set prevFolder=%CD%
-cd engineFolder
+cd %engineFolder%
 call build.bat
-cd prevFolder
+cd %prevFolder%
 GOTO copyFiles
 
 :setRemoteFolder
@@ -50,12 +50,7 @@ GOTO copyFiles
 
 :copyFiles
 echo Copying engine files...
-robocopy %remFolder% bin\ /s /e /NFL /NDL /NJH /NJS /nc /ns /np
-
-echo Copying game files...
-robocopy %gameName%\assets bin\assets /s /e /NFL /NDL /NJH /NJS /nc /ns /np
-robocopy %gameName%\scripts bin\assets\scripts\Client /s /e /NFL /NDL /NJH /NJS /np
-robocopy %gameName%\prefabs bin\assets\scripts\Client\Prefabs /s /e /NFL /NDL /NJH /NJS /np
+robocopy %remFolder% %gameName%\ /s /e /NFL /NDL /NJH /NJS /nc /ns /np /XC /XO /XN
 
 echo.
 echo All done!

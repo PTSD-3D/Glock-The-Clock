@@ -1,1 +1,18 @@
-[Bb]in/
+# Ignore everything
+*
+# But descend into directories
+!*/
+# Recursively allow files under subtree
+!/GlockTheClock/assets/**
+/GlockTheClock/assets/scripts/Engine/
+
+!/.vscode/**
+
+!/PTSD-Engine/**
+
+!workspace.code-workspace
+!.gitignore
+!.gitmodules
+!*.bat
+!*.sh
+!README.md
