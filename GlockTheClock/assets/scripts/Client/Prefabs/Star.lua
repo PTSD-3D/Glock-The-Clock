@@ -7,7 +7,7 @@ function pf.Star (params)
 			--Example user defined components
 		},
 		Transform = params.Transform,
-		Mesh = {mesh="Cube.mesh", material="Yellow"},
+		Mesh = {mesh="Star.mesh", material="Coleccionable"},
         Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=1,trigger=false,rotation=params.Transform.rotation}
 	}
 end
