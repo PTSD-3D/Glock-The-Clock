@@ -99,6 +99,72 @@ end
 Manager:addSystem(BulletSystem())
 
 -----------------------------------------------------------
+local DZSystem = ns.class("DZSystem",ns.System)
+
+function DZSystem:requires() return {"death"} end
+
+function DZSystem:initialize()
+	ns.System.initialize(self)
+	self.factor = 1
+end
+
+function DZSystem:update(dt)
+	local i = 0
+	for _, entity in pairs(self.targets) do
+		i = i + 1
+	end
+	print(i)
+end
+
+
+function DZSystem:onCollision(ent, other, col)
+	print("colisionamiento")
+	local playerComp = other:get("playerMove")
+	if(playerComp ~= nil) then
+		print("U dead")
+	end
+end
+
+Manager:addSystem(DZSystem())
+
+-----------------------------------------------------------
+
+-- ns.deathEvent = ns.class("deathEvent")
+
+-- function ns.deathEvent:initialize(player)
+-- 	self.player = player
+-- 	LOG("Firing DeathEvent")
+-- end
+-----------------------------------------------------------
+
+-- ns RespawnSystem = ns.class("RespawnSystem",ns.System)
+
+-- function onPlayerDead(event)
+-- 	-- event.player.Transform:setPosition(self.spawnPoint)
+-- end
+
+-- function RespawnSystem:requires() return {"spawnpoint"} end
+
+-- function RespawnSystem:initialize()
+-- 	ns.System.initialize(self)
+-- 	self.spawnPt = nil
+-- 	Manager.eventManager:addListener("changePerspectiveEvent", self, self.onPlayerDead)
+-- end
+
+-- function RespawnSystem:onAddEntity(entity)
+-- 	-- make sure theres only one
+-- 	--TODO make this a warning
+-- 	if(self.spawnPoint ~= nil) then 
+-- 		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning)
+-- 	else
+-- 		self.spawnPoint = entity
+-- 		LOG("Spawnpoint detected")
+-- 	end
+-- end
+
+-- Manager:addSystem(RespawnSystem())
+-----------------------------------------------------------
+
 
 LOG("Systems load completed", LogLevel.Info, 1)
 

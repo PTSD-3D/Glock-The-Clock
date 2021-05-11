@@ -8,6 +8,8 @@ local Scene={
             Components= {
             }
     },
+	DeathZone_000=prefabs.DeadZone({
+		Transform = {position={x=-0.0,y=-100,z=0},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1000,y=1.0,z=-1000}}}),
 	Platform_000=prefabs.Platform({
 		Transform = {position={x=-0.0,y=0.0,z=-6.6010847091674805},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=-10.831353187561035}}}),
 	Platform_001=prefabs.Platform({
