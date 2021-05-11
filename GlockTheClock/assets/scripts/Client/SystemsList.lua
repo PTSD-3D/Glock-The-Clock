@@ -33,7 +33,7 @@ function MoveSystem:update(dt)
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
-		mouseDirection =  mouseDirection:normalize() * vr
+		mouseDirection =  mouseDirection * vr
 		local rot = vec3:new(0, -mouseDirection.x, 0)
 		pitchCamera(mouseDirection.y*dt)
 		rb:setAngularVelocity(rot)
