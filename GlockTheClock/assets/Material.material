@@ -35,3 +35,11 @@ material Red{
 			}
 	}
 }
+
+material Yellow{
+	technique {
+		pass {
+			diffuse 0.81 0.89 0.05
+			}
+	}
+}
