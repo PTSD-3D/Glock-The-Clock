@@ -1,13 +1,13 @@
 local prefabs = reqPrefab 
 local sceneConfig = reqSceneConfigurations 
 local Scene={
- Entities={	Goal=
+ Entities={	
+	Goal=
         {
 		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
             Components= {
             }
-        }
-        ,
+    },
 	Platform_000=prefabs.Platform({
 		Transform = {position={x=-0.0,y=0.0,z=-6.6010847091674805},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=-10.831353187561035}}}),
 	Platform_001=prefabs.Platform({
@@ -24,17 +24,14 @@ local Scene={
 		Transform = {position={x=-5.200106620788574,y=0.0,z=63.49094009399414},rotation={x=-23.832374165250393,y=0.0,z=-0.0},scale={x=2.203453540802002,y=1.0,z=4.325438022613525}}}),
 	Platform_007=prefabs.Platform({
 		Transform = {position={x=-0.0,y=0.0,z=84.19429016113281},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=-10.831353187561035}}}),
-	Spawn=
-        {
-		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
-            Components= {
-            }
-        }
-        },
+	Player=prefabs.Player({ 
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}}
+	}),
+    },
 		SceneConfig=
         {
         PhysicsConfig={
-            Gravity = 5
+            Gravity = -35
         }
     }
 }
