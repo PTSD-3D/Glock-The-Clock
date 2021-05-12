@@ -4,10 +4,10 @@ local ns = require('namespace')
 function sceneConfig.sampleScene()
 	return {
 		PhysicsConfig = {
-			Gravity = 0
+			Gravity = -135
 		},
 		GraphicsConfig = {
-			LockMouse = false,
+			LockMouse = true,
 			Skybox = {
 				type = 1, --ns.SkyboxTypes.Skybox
 				enable = true,

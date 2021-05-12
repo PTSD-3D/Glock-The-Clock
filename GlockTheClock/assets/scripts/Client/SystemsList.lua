@@ -32,7 +32,8 @@ function MoveSystem:update(dt)
 		local rb = entity.Rigidbody
 		local vel = entity:get("playerMove").vel;
 		local vr = entity:get("playerMove").vrot;
-
+		-- cameraSetPos(vec3:new(0,80,0))
+		-- cameraLookAt(vec3:new(0,0,1000))
 		--makes the camera transform child of the player transform
 		if (not camChild) then
 		 	tr:setChildCamera()
@@ -81,11 +82,6 @@ function MoveSystem:update(dt)
 
 		rb:setLinearVelocity(vtotal)
 
-		
-		if(keyJustPressed(PTSDKeys.T)) then
-			LOG("Respawn button pressed",LogLevel.Trace,1)
-			Manager.eventManager:fireEvent(ns.deathEvent(entity))
-		end
 	end
 end
 
@@ -133,12 +129,13 @@ function DZSystem:update(dt)
 end
 
 
-function DZSystem:onCollision(ent, other, col)
+function DZSystem:onCollision(_, other, _)
 	print("colisionamiento")
 	local playerComp = other:get("playerMove")
 	if(playerComp ~= nil) then
 		print("U dead")
-	end
+		Manager.eventManager:fireEvent(ns.deathEvent(other))
+		end
 end
 
 Manager:addSystem(DZSystem())
