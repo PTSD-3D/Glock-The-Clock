@@ -1,6 +1,15 @@
 local ns = require('namespace')
+local prefabs = require("Prefab")
 
 LOG("Loading systems...", LogLevel.Info, 1)
+-----------------------------------------------------------
+ns.deathEvent = ns.class("deathEvent")
+
+function ns.deathEvent:initialize(player)
+	self.player = player
+	LOG("Firing DeathEvent")
+end
+-----------------------------------------------------------
 
 --Define new systems here
 local MoveSystem = ns.class("MoveSystem",ns.System)
@@ -23,7 +32,8 @@ function MoveSystem:update(dt)
 		local rb = entity.Rigidbody
 		local vel = entity:get("playerMove").vel;
 		local vr = entity:get("playerMove").vrot;
-
+		-- cameraSetPos(vec3:new(0,80,0))
+		-- cameraLookAt(vec3:new(0,0,1000))
 		--makes the camera transform child of the player transform
 		if (not self.camChild) then
 		 	tr:setChildCamera()
@@ -32,6 +42,7 @@ function MoveSystem:update(dt)
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
+		if(mouseDirection == nil) then LOG("mdir nil",LogLevel.Critical,1) end
 		mouseDirection =  mouseDirection * vr
 		local rot = vec3:new(0, -mouseDirection.x, 0)
 		pitchCamera(mouseDirection.y*dt)
@@ -70,6 +81,7 @@ function MoveSystem:update(dt)
 		end
 
 		rb:setLinearVelocity(vtotal)
+
 	end
 end
 
@@ -98,6 +110,81 @@ end
 Manager:addSystem(BulletSystem())
 
 -----------------------------------------------------------
+
+local DZSystem = ns.class("DZSystem",ns.System)
+
+function DZSystem:requires() return {"death"} end
+
+function DZSystem:initialize()
+	ns.System.initialize(self)
+	self.factor = 1
+end
+
+function DZSystem:update(dt)
+	-- local i = 0
+	-- for _, entity in pairs(self.targets) do
+	-- 	i = i + 1
+	-- end
+	-- print(i)
+end
+
+
+function DZSystem:onCollision(_, other, _)
+	local playerComp = other:get("playerMove")
+	if(playerComp ~= nil) then
+		print("Player fell to DEATH")
+		Manager.eventManager:fireEvent(ns.deathEvent(other))
+		end
+end
+
+Manager:addSystem(DZSystem())
+
+-----------------------------------------------------------
+
+local RespawnSystem = ns.class("RespawnSystem",ns.System)
+
+function RespawnSystem:onPlayerDead(event)
+	if(self.spawnPoint==nil) then
+		LOG("No respawn point set",LogLevel.Critical,1)
+		return
+	end
+	local p = self.spawnPoint.Transform.position
+	local nPos = vec3:new(p.x,p.y,p.z)
+	local v0 = vec3:new(0,0,0)
+	event.player.Rigidbody:setLinearVelocity(v0)
+	event.player.Rigidbody:setAngularVelocity(v0)
+	event.player.Rigidbody:setPosition(nPos)
+end
+
+function RespawnSystem:requires() return {"spawnpoint"} end
+
+function RespawnSystem:update()
+	-- local i = 0
+	-- for _, entity in pairs(self.targets) do
+	-- 	i = i + 1
+	-- end
+	-- print(i)
+end
+
+function RespawnSystem:initialize()
+	ns.System.initialize(self)
+	self.spawnPt = nil
+	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
+end
+
+function RespawnSystem:onAddEntity(entity)
+	-- make sure theres only one
+	if(self.spawnPoint ~= nil) then 
+		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning,1)
+	else
+		self.spawnPoint = entity
+		LOG("Spawnpoint detected",LogLevel.Info,1)
+	end
+end
+
+Manager:addSystem(RespawnSystem())
+-----------------------------------------------------------
+
 
 LOG("Systems load completed", LogLevel.Info, 1)
 
