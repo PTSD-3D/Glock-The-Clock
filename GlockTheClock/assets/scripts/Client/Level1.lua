@@ -1,70 +1,14 @@
 local prefabs = reqPrefab 
 local sceneConfig = reqSceneConfigurations 
 local Scene={
- Entities={	Cube=
+ Entities={	DeadZone_000=
         {
-		Transform = {position={x=9.099167823791504,y=18.09440040588379,z=-2.6706790924072266},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+		Transform = {position={x=-34.03219223022461,y=-82.47428894042969,z=53.89710235595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=239.62815856933594,y=1.0,z=239.62815856933594}},
             Components= {
             }
         }
         ,
-	Cube_001=
-        {
-		Transform = {position={x=12.08571720123291,y=18.09440040588379,z=18.393634796142578},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_002=
-        {
-		Transform = {position={x=4.155189514160156,y=18.09440040588379,z=18.041988372802734},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_003=
-        {
-		Transform = {position={x=-24.918935775756836,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_004=
-        {
-		Transform = {position={x=-34.626441955566406,y=29.45375633239746,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_005=
-        {
-		Transform = {position={x=-43.466041564941406,y=23.465904235839844,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=-90.00000250447816},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_006=
-        {
-		Transform = {position={x=-75.82684326171875,y=23.737550735473633,z=65.14886474609375},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_007=
-        {
-		Transform = {position={x=-75.82684326171875,y=29.54666519165039,z=76.53772735595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	Cube_008=
-        {
-		Transform = {position={x=-75.82684326171875,y=20.084461212158203,z=107.09172821044922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
-	End=
+	Goal=
         {
 		Transform = {position={x=-75.55284881591797,y=18.937252044677734,z=130.92279052734375},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
             Components= {
@@ -85,11 +29,74 @@ local Scene={
 		Transform = {position={x=-74.93299865722656,y=-4.676860809326172,z=52.011505126953125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=13.536832809448242,y=17.694080352783203,z=12.35163688659668}}}),
 	Platform_006=prefabs.Platform({
 		Transform = {position={x=-74.93299865722656,y=5.99833869934082,z=115.08952331542969},rotation={x=-0.0,y=0.0,z=0.0},scale={x=13.536832809448242,y=7.076155662536621,z=27.246719360351562}}}),
-	Star_000=prefabs.Star({
-		Transform = {position={x=-25.016244888305664,y=6.011415004730225,z=35.112457275390625},rotation={x=-0.0,y=0.0,z=90.00000250447816},scale={x=1.530989408493042,y=1.530989408493042,z=1.530989408493042}}}),
-	Start=
+	Spawn=
         {
 		Transform = {position={x=9.335329055786133,y=18.937252044677734,z=-21.237735748291016},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Star_000=prefabs.Star({
+		Transform = {position={x=-25.016244888305664,y=6.011415004730225,z=35.112457275390625},rotation={x=-0.0,y=0.0,z=90.00000250447816},scale={x=1.530989408493042,y=1.530989408493042,z=1.530989408493042}}}),
+	Target_000=
+        {
+		Transform = {position={x=9.099167823791504,y=18.09440040588379,z=-2.6706790924072266},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_001=
+        {
+		Transform = {position={x=14.165214538574219,y=18.09440040588379,z=18.393634796142578},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_002=
+        {
+		Transform = {position={x=4.155189514160156,y=18.09440040588379,z=18.041988372802734},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_003=
+        {
+		Transform = {position={x=-24.918935775756836,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_004=
+        {
+		Transform = {position={x=-34.626441955566406,y=29.45375633239746,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_005=
+        {
+		Transform = {position={x=-43.466041564941406,y=23.465904235839844,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=-90.00000250447816},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_006=
+        {
+		Transform = {position={x=-75.82684326171875,y=23.737550735473633,z=65.14886474609375},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_007=
+        {
+		Transform = {position={x=-75.82684326171875,y=29.54666519165039,z=76.53772735595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+            Components= {
+            }
+        }
+        ,
+	Target_008=
+        {
+		Transform = {position={x=-75.82684326171875,y=20.084461212158203,z=107.09172821044922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
             Components= {
             }
         }
