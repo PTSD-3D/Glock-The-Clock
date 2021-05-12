@@ -60,6 +60,11 @@ function MoveSystem:update(dt)
 		vtotal.y = rb:getLinearVelocity().y
 
 		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
+		if rb:hasRayCastHit(vec3:new(0, -100, 0)) then 
+			print("tiene suelo debajo")
+		else
+			print("no hay suelo")
+		end
 		if keyJustPressed(PTSDKeys.Space) then
 			--adds the force of the jump
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
