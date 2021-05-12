@@ -130,10 +130,9 @@ end
 
 
 function DZSystem:onCollision(_, other, _)
-	print("colisionamiento")
 	local playerComp = other:get("playerMove")
 	if(playerComp ~= nil) then
-		print("U dead")
+		print("Player fell to DEATH")
 		Manager.eventManager:fireEvent(ns.deathEvent(other))
 		end
 end
@@ -145,7 +144,6 @@ Manager:addSystem(DZSystem())
 local RespawnSystem = ns.class("RespawnSystem",ns.System)
 
 function RespawnSystem:onPlayerDead(event)
-	LOG("Respawn Treating deathevent")
 	if(self.spawnPoint==nil) then
 		LOG("No respawn point set",LogLevel.Critical,1)
 		return
@@ -153,12 +151,9 @@ function RespawnSystem:onPlayerDead(event)
 	local p = self.spawnPoint.Transform.position
 	local nPos = vec3:new(p.x,p.y,p.z)
 	local v0 = vec3:new(0,0,0)
-	print(nPos)
-	print( event.player.Transform.position)
 	event.player.Rigidbody:setLinearVelocity(v0)
 	event.player.Rigidbody:setAngularVelocity(v0)
 	event.player.Rigidbody:setPosition(nPos)
-	print(event.player.Transform.position)
 end
 
 function RespawnSystem:requires() return {"spawnpoint"} end
