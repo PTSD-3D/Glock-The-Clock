@@ -8,6 +8,6 @@ function pf.Star (params)
 		},
 		Transform = params.Transform,
 		Mesh = {mesh="Star.mesh", material="Coleccionable"},
-        Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=1,trigger=false,rotation=params.Transform.rotation}
+        Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=2,trigger=true,rotation=params.Transform.rotation}
 	}
 end

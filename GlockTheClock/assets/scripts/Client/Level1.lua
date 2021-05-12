@@ -1,5 +1,5 @@
-local prefabs = reqPrefab 
-local sceneConfig = reqSceneConfigurations 
+local prefabs = require('Prefab')
+local sceneConfig = require('Prefab')
 local Scene={
  Entities={	DeadZone_000=
         {

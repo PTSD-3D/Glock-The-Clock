@@ -9,6 +9,6 @@ function pf.Platform (params)
 		},
 		Transform = params.Transform,
 		Mesh = {mesh="Cube.mesh", material="Red"},
-        Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=1,trigger=false,rotation=params.Transform.rotation}
+        Rigidbody = {size=params.Transform.scale,mass=0,position=params.Transform.position,type=1,trigger=false,rotation=params.Transform.rotation}
 	}
 end
