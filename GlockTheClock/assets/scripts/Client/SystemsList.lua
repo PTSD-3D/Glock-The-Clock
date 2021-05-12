@@ -10,7 +10,7 @@ function MoveSystem:requires()
 	return {"playerMove"}
 end
 
-local camChild = false;
+MoveSystem.camChild = false;
 -- function MoveSystem:initialize()
 -- 	for _, entity in pairs(self.targets) do
 -- 		local tr = entity.Transform
@@ -28,7 +28,7 @@ function MoveSystem:update(dt)
 		--makes the camera transform child of the player transform
 		if (not camChild) then
 		 	tr:setChildCamera()
-		 	camChild = true
+		 	self.camChild = true
 		end
 
 		--rotation + camera
