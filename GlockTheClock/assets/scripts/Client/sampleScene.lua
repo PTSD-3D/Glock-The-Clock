@@ -6,8 +6,16 @@ local Scene={
         {
 		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
             Components= {
+				
             }
     },
+	Spawn=
+	{
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
+		Components= {
+			{ name = "spawnpoint", arguments = {true} }
+		}
+},
 	DeathZone_000=prefabs.DeadZone({
 		Transform = {position={x=-0.0,y=-100,z=0},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1000,y=1.0,z=-1000}}}),
 	Platform_000=prefabs.Platform({

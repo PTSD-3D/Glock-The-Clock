@@ -2,6 +2,14 @@ local ns = reqNamespace
 local prefabs = reqPrefab
 
 LOG("Loading systems...", LogLevel.Info, 1)
+-----------------------------------------------------------
+ns.deathEvent = ns.class("deathEvent")
+
+function ns.deathEvent:initialize(player)
+	self.player = player
+	LOG("Firing DeathEvent")
+end
+-----------------------------------------------------------
 
 --Define new systems here
 local MoveSystem = ns.class("MoveSystem",ns.System)
@@ -70,6 +78,11 @@ function MoveSystem:update(dt)
 			vtotal.y = 0
 		end
 
+		if(keyJustPressed(PTSDKeys.T)) then
+			LOG("Respawn button pressed",LogLevel.Trace,1)
+			Manager.eventManager:fireEvent(ns.deathEvent(entity))
+		end
+
 		rb:setLinearVelocity(vtotal)
 	end
 end
@@ -99,6 +112,7 @@ end
 Manager:addSystem(BulletSystem())
 
 -----------------------------------------------------------
+
 local DZSystem = ns.class("DZSystem",ns.System)
 
 function DZSystem:requires() return {"death"} end
@@ -109,11 +123,11 @@ function DZSystem:initialize()
 end
 
 function DZSystem:update(dt)
-	local i = 0
-	for _, entity in pairs(self.targets) do
-		i = i + 1
-	end
-	print(i)
+	-- local i = 0
+	-- for _, entity in pairs(self.targets) do
+	-- 	i = i + 1
+	-- end
+	-- print(i)
 end
 
 
@@ -129,40 +143,52 @@ Manager:addSystem(DZSystem())
 
 -----------------------------------------------------------
 
--- ns.deathEvent = ns.class("deathEvent")
+local RespawnSystem = ns.class("RespawnSystem",ns.System)
 
--- function ns.deathEvent:initialize(player)
--- 	self.player = player
--- 	LOG("Firing DeathEvent")
--- end
------------------------------------------------------------
+function RespawnSystem:onPlayerDead(event)
+	LOG("Respawn Treating deathevent")
+	if(self.spawnPoint==nil) then
+		LOG("No respawn point set",LogLevel.Critical,1)
+		return
+	end
+	local p = self.spawnPoint.Transform.position
+	local nPos = vec3:new(p.x,p.y,p.z)
+	local v0 = vec3:new(0,0,0)
+	print(nPos)
+	print( event.player.Transform.position)
+	event.player.Rigidbody:setLinearVelocity(v0)
+	event.player.Rigidbody:setAngularVelocity(v0)
+	event.player.Rigidbody:setPosition(nPos)
+	print(event.player.Transform.position)
+end
 
--- ns RespawnSystem = ns.class("RespawnSystem",ns.System)
+function RespawnSystem:requires() return {"spawnpoint"} end
 
--- function onPlayerDead(event)
--- 	-- event.player.Transform:setPosition(self.spawnPoint)
--- end
+function RespawnSystem:update()
+	-- local i = 0
+	-- for _, entity in pairs(self.targets) do
+	-- 	i = i + 1
+	-- end
+	-- print(i)
+end
 
--- function RespawnSystem:requires() return {"spawnpoint"} end
+function RespawnSystem:initialize()
+	ns.System.initialize(self)
+	self.spawnPt = nil
+	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
+end
 
--- function RespawnSystem:initialize()
--- 	ns.System.initialize(self)
--- 	self.spawnPt = nil
--- 	Manager.eventManager:addListener("changePerspectiveEvent", self, self.onPlayerDead)
--- end
+function RespawnSystem:onAddEntity(entity)
+	-- make sure theres only one
+	if(self.spawnPoint ~= nil) then 
+		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning,1)
+	else
+		self.spawnPoint = entity
+		LOG("Spawnpoint detected",LogLevel.Info,1)
+	end
+end
 
--- function RespawnSystem:onAddEntity(entity)
--- 	-- make sure theres only one
--- 	--TODO make this a warning
--- 	if(self.spawnPoint ~= nil) then 
--- 		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning)
--- 	else
--- 		self.spawnPoint = entity
--- 		LOG("Spawnpoint detected")
--- 	end
--- end
-
--- Manager:addSystem(RespawnSystem())
+Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
 
 
