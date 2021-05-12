@@ -1,4 +1,4 @@
-local sceneConfig = reqPrefab
+local sceneConfig = require('Prefab')
 function sceneConfig.sampleScene()
 	return {
 		PhysicsConfig = {

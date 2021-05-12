@@ -1,5 +1,4 @@
-local ns = reqNamespace
-local prefabs = reqPrefab
+local ns = require('namespace')
 
 LOG("Loading systems...", LogLevel.Info, 1)
 
@@ -26,7 +25,7 @@ function MoveSystem:update(dt)
 		local vr = entity:get("playerMove").vrot;
 
 		--makes the camera transform child of the player transform
-		if (not camChild) then
+		if (not self.camChild) then
 		 	tr:setChildCamera()
 		 	self.camChild = true
 		end
@@ -60,6 +59,7 @@ function MoveSystem:update(dt)
 		vtotal.y = rb:getLinearVelocity().y
 
 		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
+			print('aaaaaaa')
 			--adds the force of the jump
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
