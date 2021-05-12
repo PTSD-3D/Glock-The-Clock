@@ -1,5 +1,5 @@
-local ns = reqNamespace
-local prefabs = reqPrefab
+local ns = require('namespace')
+local prefabs = require("Prefab")
 
 LOG("Loading systems...", LogLevel.Info, 1)
 -----------------------------------------------------------
@@ -41,6 +41,7 @@ function MoveSystem:update(dt)
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
+		if(mouseDirection == nil) then LOG("mdir nil",LogLevel.Critical,1) end
 		mouseDirection =  mouseDirection * vr
 		local rot = vec3:new(0, -mouseDirection.x, 0)
 		pitchCamera(mouseDirection.y*dt)
@@ -78,12 +79,13 @@ function MoveSystem:update(dt)
 			vtotal.y = 0
 		end
 
+		rb:setLinearVelocity(vtotal)
+
+		
 		if(keyJustPressed(PTSDKeys.T)) then
 			LOG("Respawn button pressed",LogLevel.Trace,1)
 			Manager.eventManager:fireEvent(ns.deathEvent(entity))
 		end
-
-		rb:setLinearVelocity(vtotal)
 	end
 end
 
