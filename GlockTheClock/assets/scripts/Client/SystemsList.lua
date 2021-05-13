@@ -1,15 +1,8 @@
 local ns = require('namespace')
-local prefabs = require("Prefab")
 
 LOG("Loading systems...", LogLevel.Info, 1)
 -----------------------------------------------------------
 ns.deathEvent = ns.class("deathEvent")
-
-function ns.deathEvent:initialize(player)
-	self.player = player
-	LOG("Firing DeathEvent")
-end
------------------------------------------------------------
 
 --Define new systems here
 local MoveSystem = ns.class("MoveSystem",ns.System)
@@ -129,7 +122,7 @@ function DZSystem:update(dt)
 end
 
 
-function DZSystem:onCollision(_, other, _)
+function DZSystem:onCollision(something, other, _)
 	local playerComp = other:get("playerMove")
 	if(playerComp ~= nil) then
 		print("Player fell to DEATH")
@@ -184,7 +177,6 @@ end
 
 Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
-
 
 LOG("Systems load completed", LogLevel.Info, 1)
 
