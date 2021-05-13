@@ -37,18 +37,13 @@ local Scene={
 		Transform = {position={x=-0.0,y=12.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.521728515625,y=3.521728515625,z=3.521728515625}}
 	}),
 	RedTarget= prefabs.RedTarget({
-		Transform = {position={x=10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
+		Transform = {position={x=10,y=30,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
 		targetCollision = {points = 10},
-		Components= {
-			--{ name = "targetCollision", arguments = {10} }
-		}
 	}),
 	BlueTarget= prefabs.BlueTarget({
 		Transform = {position={x=-10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
 		targetCollision = {points = 100},
-		targetMove = {vx = 0, vy = 1, vz = 0, rx = 0, ry = 10, rz = 0, distance = 0, maxDistance= 10},
-		Components= {
-		}
+		targetMove = {range = {10,10,0}, rotation = {0,5,0}, speed = {5,5,0}, trig = {"cos", "sin", "sin"}},
 	})
     },
 	SceneConfig=sceneConfig.sampleScene()

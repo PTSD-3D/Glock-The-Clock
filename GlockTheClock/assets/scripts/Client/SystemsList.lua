@@ -192,20 +192,29 @@ function TargetMoveSystem:requires() return {"targetMove"} end
 function TargetMoveSystem:magnitude(x, y, z)
 	return math.sqrt(x*x+y*y+z*z) end
 
+function TargetMoveSystem:trigonometry(targetMove, dt)
+	local move = {}
+	local trig
+	for i = 1, 3 do
+		if(targetMove.trig[i] == "cos") then trig = math.cos
+		else trig = math.sin
+		end
+		--division entre 60 para que el rango sea mas intuitivo
+		move[i] = targetMove.range[i]/60*targetMove.speed[i]*dt*trig(math.rad(targetMove.angle[i]))
+		targetMove.angle[i] = targetMove.angle[i] + targetMove.speed[i]*dt
+	end
+	return vec3:new(move[1], move[2], move[3])
+end
+
 function TargetMoveSystem:update(dt) 
 	for _, entity in pairs(self.targets) do
 		local targetMove = entity:get("targetMove")
-		if(targetMove.distance > targetMove.maxDistance) then
-			targetMove.vx = -targetMove.vx
-			targetMove.vy = -targetMove.vy
-			targetMove.vz = -targetMove.vz
-			targetMove.distance = 0
+		entity.Transform:translate(self:trigonometry(targetMove, dt))
+		local rot = {}
+		for i = 1, 3 do
+			rot[i] = targetMove.rotation[i]*dt
 		end
-		local movement = vec3:new(targetMove.vx*dt, targetMove.vy*dt, targetMove.vz*dt)
-		entity.Transform:translate(movement)
-		local rotation = vec3:new(targetMove.rx*dt, targetMove.ry*dt, targetMove.rz*dt)
-		entity.Transform:rotate(rotation)
-		targetMove.distance = targetMove.distance + self:magnitude(targetMove.vx, targetMove.vy, targetMove.vz)
+		entity.Transform:rotate(vec3:new(rot[1], rot[2], rot[3]))
 	end
 end
 
@@ -217,8 +226,7 @@ local TargetCollisionSystem = ns.class("TargetCollisionSystem", ns.System)
 function TargetCollisionSystem:requires() return {"targetCollision"} end
 
 function TargetCollisionSystem:onCollision(target, other, collision)
-	--if(other:has("bullet")) then
-	if(true) then
+	if(other:has("playerMove")) then
 		local targetCollision = target:get("targetCollision")
 		Manager:removeEntity(target)
 		LOG("Player scored " .. targetCollision.points .. " points")

@@ -7,6 +7,6 @@ function pf.RedTarget(params)
 		},
 		Transform = params.Transform,
 		Mesh = { mesh = "Target.mesh", material = "RedTarget" },
-        Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=0,trigger=false,rotation=params.Transform.rotation}
+        Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=1,trigger=true,rotation=params.Transform.rotation}
 	}
 end
