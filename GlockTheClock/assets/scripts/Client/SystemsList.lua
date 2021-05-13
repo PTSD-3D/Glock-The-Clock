@@ -129,7 +129,7 @@ function DZSystem:update(dt)
 end
 
 
-function DZSystem:onCollision(_, other, _)
+function DZSystem:onCollision(this, other, _)
 	local playerComp = other:get("playerMove")
 	if(playerComp ~= nil) then
 		print("Player fell to DEATH")
