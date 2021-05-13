@@ -109,8 +109,6 @@ end
 
 Manager:addSystem(BulletSystem())
 
------------------------------------------------------------
-
 local DZSystem = ns.class("DZSystem",ns.System)
 
 function DZSystem:requires() return {"death"} end

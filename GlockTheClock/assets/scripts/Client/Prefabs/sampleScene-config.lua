@@ -4,7 +4,7 @@ local ns = require('namespace')
 function sceneConfig.sampleScene()
 	return {
 		PhysicsConfig = {
-			Gravity = -135
+			Gravity = -250
 		},
 		GraphicsConfig = {
 			LockMouse = true,
