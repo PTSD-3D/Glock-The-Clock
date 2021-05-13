@@ -4,7 +4,7 @@ function pf.BlueTarget(params)
 	return {
 		Components = {
 			{ name = "targetCollision", arguments={params.targetCollision.points}},
-			{ name = "targetMove", arguments={params.targetMove.vx, params.targetMove.vy, params.targetMove.vz, params.targetMove.rx, params.targetMove.ry, params.targetMove.rz}}
+			{ name = "targetMove", arguments={params.targetMove.vx, params.targetMove.vy, params.targetMove.vz, params.targetMove.rx, params.targetMove.ry, params.targetMove.rz, params.targetMove.distance, params.targetMove.maxDistance}}
 		},
 		Transform = params.Transform,
 		Mesh = { mesh = "Target.mesh", material = "BlueTarget" },

@@ -39,15 +39,15 @@ local Scene={
 	RedTarget= prefabs.RedTarget({
 		Transform = {position={x=10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
 		targetCollision = {points = 10},
-		Components= {			
+		Components= {
 			--{ name = "targetCollision", arguments = {10} }
 		}
 	}),
 	BlueTarget= prefabs.BlueTarget({
 		Transform = {position={x=-10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
 		targetCollision = {points = 100},
-		targetMove = {vx = 0.1, vy = 0.1, vz = 0.1, rx = 0, ry = 10, rz = 0},
-		Components= {	
+		targetMove = {vx = 0, vy = 1, vz = 0, rx = 0, ry = 10, rz = 0, distance = 0, maxDistance= 10},
+		Components= {
 		}
 	})
     },

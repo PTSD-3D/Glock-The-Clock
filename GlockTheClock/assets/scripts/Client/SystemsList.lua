@@ -189,13 +189,23 @@ local TargetMoveSystem = ns.class("TargetMoveSystem", ns.System)
 
 function TargetMoveSystem:requires() return {"targetMove"} end
 
+function TargetMoveSystem:magnitude(x, y, z)
+	return math.sqrt(x*x+y*y+z*z) end
+
 function TargetMoveSystem:update(dt) 
 	for _, entity in pairs(self.targets) do
 		local targetMove = entity:get("targetMove")
+		if(targetMove.distance > targetMove.maxDistance) then
+			targetMove.vx = -targetMove.vx
+			targetMove.vy = -targetMove.vy
+			targetMove.vz = -targetMove.vz
+			targetMove.distance = 0
+		end
 		local movement = vec3:new(targetMove.vx*dt, targetMove.vy*dt, targetMove.vz*dt)
 		entity.Transform:translate(movement)
 		local rotation = vec3:new(targetMove.rx*dt, targetMove.ry*dt, targetMove.rz*dt)
 		entity.Transform:rotate(rotation)
+		targetMove.distance = targetMove.distance + self:magnitude(targetMove.vx, targetMove.vy, targetMove.vz)
 	end
 end
 
@@ -206,7 +216,7 @@ local TargetCollisionSystem = ns.class("TargetCollisionSystem", ns.System)
 
 function TargetCollisionSystem:requires() return {"targetCollision"} end
 
-function TargetCollisionSystem:onCollision(target, other, collision) 
+function TargetCollisionSystem:onCollision(target, other, collision)
 	--if(other:has("bullet")) then
 	if(true) then
 		local targetCollision = target:get("targetCollision")
