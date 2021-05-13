@@ -1,203 +1,98 @@
-local ns = reqNamespace
-local prefabs = reqPrefab
+local ns = require('namespace')
+local prefabs = require("Prefab")
 
 LOG("Loading systems...", LogLevel.Info, 1)
+-----------------------------------------------------------
+ns.deathEvent = ns.class("deathEvent")
+
+function ns.deathEvent:initialize(player)
+	self.player = player
+	LOG("Firing DeathEvent")
+end
+-----------------------------------------------------------
 
 --Define new systems here
-
 local MoveSystem = ns.class("MoveSystem",ns.System)
 
---data
-MoveSystem.sideview = true
-MoveSystem.deadzone = 0.1
-MoveSystem.dirs = {
-	-- 2d3d
-	up = vec3:new(0, 1, 0),
-	down = vec3:new(0, -1, 0),
-	-- 3d
-	left = vec3:new(0, 0, -1),
-	right = vec3:new(0, 0, 1),
-	-- 2d
-	forward = vec3:new(1, 0, 0),
-	backward = vec3:new(-1, 0, 0)
-}
-
-function MoveSystem:requires() return { "playerMove" } end
-
-function MoveSystem:Move(entity,dir, delta, speed)
-	entity.Transform:translate(dir * delta * speed:magnitude())
+function MoveSystem:requires()
+	return {"playerMove"}
 end
 
-function MoveSystem:Shoot(entity, delta)
-	LOG("PEW")
-	local chan = playSound(Resources.Sounds.Oof.id)
-	setChannelVolume(chan,1)
-	ns.spawnEntity(Manager,prefabs.Bullet({
-		Transform = {
-			position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},
-			rotation={x=0.0,y=0.0,z=0.0},
-			scale={x=1,y= 1,z=1}}}
-	))
-end
-
-function MoveSystem:Action()
-	LOG("Secondary")
-end
-
-function MoveSystem:Change()
-	self.sideview = not self.sideview
-	LOG("Changing view")
-end
-
---Read the input from a keyboard/mouse and sends a commad
-function MoveSystem:KeyboardHandleInput(entity,dt,speed)
-	--Movement
-	local direction = vec3:new(0, 0, 0)
-	-- Up and down
-	if keyPressed(PTSDKeys.W) then direction = direction + self.dirs.up end
-	if keyPressed(PTSDKeys.S) then direction = direction + self.dirs.down end
-	-- 2D control
-	if keyPressed(PTSDKeys.A) and self.sideview then direction = direction + self.dirs.backward end
-	if keyPressed(PTSDKeys.D) and self.sideview then direction = direction + self.dirs.forward end
-	-- 3D control
-	if keyPressed(PTSDKeys.A) and not self.sideview then direction = direction + self.dirs.left end
-	if keyPressed(PTSDKeys.D) and not self.sideview then direction = direction + self.dirs.right end
-
-	self:Move(entity, direction,dt,speed)
-
-	-- Actions (shoot, change, something)
-	if keyJustPressed(PTSDKeys.J) or mouseButtonJustPressed(PTSDMouseButton.Right) then
-		self:Action()
-	end
-	if keyJustPressed(PTSDKeys.H) or  mouseButtonJustPressed(PTSDMouseButton.Left) then
-		self:Shoot(entity, dt)
-	end
-	if keyJustPressed(PTSDKeys.Space) then
-		self:Change()
-	end
-end
-
---Read the input from a gamepad and sends a commad
-function MoveSystem:ControllerHandleInput(entity,dt,speed)
-	local axis = controllerLeftAxis(0)
-	local direction = vec3:new(0, 0, 0)
-	-- Up and down
-	if axis.y < -self.deadzone then direction = direction + self.dirs.up end
-	if axis.y > self.deadzone then direction = direction + self.dirs.down end
-	-- 2D control
-	if axis.x > self.deadzone and self.sideview then direction = direction + self.dirs.forward end
-	if axis.x < -self.deadzone and self.sideview then direction = direction + self.dirs.backward end
-	-- 3D control
-	if axis.x > self.deadzone and not self.sideview then direction = direction + self.dirs.right end
-	if axis.x < -self.deadzone and not self.sideview then direction = direction + self.dirs.left end
-	self:Move(entity, direction,dt,speed)
-
-	
-	-- Actions (shoot, change, something)
-	if controllerButtonJustPressed(0, PTSDControllerButtons.B) or controllerRightTrigger(0) > self.deadzone then
-		self:Action()
-	end
-	if controllerButtonJustPressed(0, PTSDControllerButtons.A) or controllerLeftTrigger(0) > self.deadzone then
-		self:Shoot(entity, dt)
-	end
-	if controllerButtonJustPressed(0, PTSDControllerButtons.Y) then
-		self:Change()
-	end
-	
-end
+local camChild = false;
+-- function MoveSystem:initialize()
+-- 	for _, entity in pairs(self.targets) do
+-- 		local tr = entity.Transform
+-- 		tr.setChildCamera()
+-- 	end
+-- end
 
 function MoveSystem:update(dt)
 	for _, entity in pairs(self.targets) do
-		local playerMoveCom = entity:get("playerMove")
-		local vx = playerMoveCom.x
-		local vy = playerMoveCom.y
-		local vz = playerMoveCom.z
-		local speed = vec3:new(vx, vy, vz)
-		self:KeyboardHandleInput(entity,dt,speed)
-		self:ControllerHandleInput(entity,dt,speed)
+		local tr = entity.Transform
+		local rb = entity.Rigidbody
+		local vel = entity:get("playerMove").vel;
+		local vr = entity:get("playerMove").vrot;
+		-- cameraSetPos(vec3:new(0,80,0))
+		-- cameraLookAt(vec3:new(0,0,1000))
+		--makes the camera transform child of the player transform
+		if (not camChild) then
+		 	tr:setChildCamera()
+		 	camChild = true
+		end
+
+		--rotation + camera
+		local mouseDirection = getMouseRelativePosition()
+		if(mouseDirection == nil) then LOG("mdir nil",LogLevel.Critical,1) end
+		mouseDirection =  mouseDirection * vr
+		local rot = vec3:new(0, -mouseDirection.x, 0)
+		pitchCamera(mouseDirection.y*dt)
+		rb:setAngularVelocity(rot)
+
+		--getting direction vector
+		local dir = vec3:new(0, 0, 0);
+		if keyPressed(PTSDKeys.A) then
+			dir = dir - tr:getRight()
+		end
+		if keyPressed(PTSDKeys.W) then
+			dir = dir + tr:getForward()
+		end
+		if keyPressed(PTSDKeys.S) then
+			dir = dir - tr:getForward()
+		end
+		if keyPressed(PTSDKeys.D) then
+			dir = dir + tr:getRight()
+		end
+
+		--making the velocity vector's magnitude equal to vel
+		local vtotal = dir:normalize() * vel
+
+		--making sure the jump isn't overwritten
+		vtotal.y = rb:getLinearVelocity().y
+
+		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
+		if keyJustPressed(PTSDKeys.Space) then
+			--adds the force of the jump
+			local force = vec3:new(0, entity:get("playerMove").jump, 0)
+			local ref = vec3:new(0, 0, 0)
+			rb:addForce(force, ref)
+
+			--this is only necessary because the player is on the void
+			vtotal.y = 0
+		end
+
+		rb:setLinearVelocity(vtotal)
+
 	end
 end
 
 Manager:addSystem(MoveSystem())
 
------------------------------------------------------------
 
-local SoundSystem = ns.class("SoundSystem",ns.System)
-
-function SoundSystem:requires()
-	return {"boombox"}
-end
-
-function SoundSystem:onPlay(music)
-	if music.channel == -1 then 
-		--we play for the first time
-		music.channel = playSound(music.sound.id)
-	else
-		resumeChannel(music.channel)
-	end
-
-end
-
-function SoundSystem:onStop(music)
-	pauseChannel(music.channel)
-end
-
-function SoundSystem:setVolume(music)
-	setChannelVolume(music.channel,music.volume)
-end
-
-function SoundSystem:update(dt)
-	for _, entity in pairs(self.targets) do
-		local music = entity:get("boombox")
-		if keyJustPressed(PTSDKeys.Q) then
-			--it just cant be initialized to false srry
-			if music.isPlaying == nil then
-				music.isPlaying = false
-			end
-			if music.isPlaying then
-				music.isPlaying = false
-				self:onStop(music)
-			else
-				music.isPlaying = true
-				self:onPlay(music)				
-			end
-		end
-		if music.channel == -1 then
-			return
-		end
-		if keyJustPressed(PTSDKeys.R) and music.volume <= 1 then
-			music.volume = music.volume + 0.1
-			self:setVolume(music)
-		elseif keyJustPressed(PTSDKeys.F) and music.volume > 0 then
-			music.volume = music.volume - 0.1
-			self:setVolume(music)
-		end
-	end
-end
-
-Manager:addSystem(SoundSystem())
 -----------------------------------------------------------
 
 local BulletSystem = ns.class("BulletSystem",ns.System)
 
 function BulletSystem:requires() return {"bullet"} end
-
-function BulletSystem:initialize()
-		ns.System.initialize(self)
-		self.factor = 1
-end
-
-function BulletSystem:onCollision(ent, other, col)
-	ent.Mesh:setMaterial("Red")
-	other.Mesh:setMaterial("Red")
-	ent.Transform:translate(vec3:new(self.factor*math.random(1),self.factor*math.random(1),self.factor*math.random(1)))
-	other.Transform:translate(vec3:new(self.factor*-1*math.random(1),self.factor*-1*math.random(1),self.factor*-1*math.random(1)))
-	print("Collision Points:")
-	for i,v in ipairs(col) do
-		v:print("\t"..i..": ")
-	end	
-	self.factor = self.factor+1
-end
 
 function BulletSystem:update(dt)
 	for _, entity in pairs(self.targets) do
@@ -206,14 +101,88 @@ function BulletSystem:update(dt)
 		entity.Transform:translate(movement)
 		bulletInfo.lifetime = bulletInfo.lifetime - 1
 		if(bulletInfo.lifetime <= 0) then
+			--delete entity
 			Manager:removeEntity(entity)
 		end
 	end
-	self.collided = {}
 end
 
 Manager:addSystem(BulletSystem())
 
+-----------------------------------------------------------
+
+local DZSystem = ns.class("DZSystem",ns.System)
+
+function DZSystem:requires() return {"death"} end
+
+function DZSystem:initialize()
+	ns.System.initialize(self)
+	self.factor = 1
+end
+
+function DZSystem:update(dt)
+	-- local i = 0
+	-- for _, entity in pairs(self.targets) do
+	-- 	i = i + 1
+	-- end
+	-- print(i)
+end
+
+
+function DZSystem:onCollision(_, other, _)
+	local playerComp = other:get("playerMove")
+	if(playerComp ~= nil) then
+		print("Player fell to DEATH")
+		Manager.eventManager:fireEvent(ns.deathEvent(other))
+		end
+end
+
+Manager:addSystem(DZSystem())
+
+-----------------------------------------------------------
+
+local RespawnSystem = ns.class("RespawnSystem",ns.System)
+
+function RespawnSystem:onPlayerDead(event)
+	if(self.spawnPoint==nil) then
+		LOG("No respawn point set",LogLevel.Critical,1)
+		return
+	end
+	local p = self.spawnPoint.Transform.position
+	local nPos = vec3:new(p.x,p.y,p.z)
+	local v0 = vec3:new(0,0,0)
+	event.player.Rigidbody:setLinearVelocity(v0)
+	event.player.Rigidbody:setAngularVelocity(v0)
+	event.player.Rigidbody:setPosition(nPos)
+end
+
+function RespawnSystem:requires() return {"spawnpoint"} end
+
+function RespawnSystem:update()
+	-- local i = 0
+	-- for _, entity in pairs(self.targets) do
+	-- 	i = i + 1
+	-- end
+	-- print(i)
+end
+
+function RespawnSystem:initialize()
+	ns.System.initialize(self)
+	self.spawnPt = nil
+	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
+end
+
+function RespawnSystem:onAddEntity(entity)
+	-- make sure theres only one
+	if(self.spawnPoint ~= nil) then 
+		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning,1)
+	else
+		self.spawnPoint = entity
+		LOG("Spawnpoint detected",LogLevel.Info,1)
+	end
+end
+
+Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
 
 local TargetMoveSystem = ns.class("TargetMoveSystem", ns.System)
@@ -251,5 +220,3 @@ end
 Manager:addSystem(TargetCollisionSystem())
 -----------------------------------------------------------
 LOG("Systems load completed", LogLevel.Info, 1)
-
-
