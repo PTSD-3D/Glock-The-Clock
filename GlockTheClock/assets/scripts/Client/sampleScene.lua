@@ -29,7 +29,20 @@ local Scene={
 		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
             Components= {
             }
-        }
+        },
+		RedTarget= prefabs.RedTarget({
+			Transform = {position={x=-0.0,y=0.0,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
+            Components= {
+				targetCollision = {points = 10}
+            }
+		}),
+		BlueTarget= prefabs.BlueTarget({
+			Transform = {position={x=-0.0,y=5.0,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
+            Components= {
+				targetCollision = {points = 100},
+				targetMove = {vx = 0.1, vy = 0.1, vz = 0.1, rx = 0.1, ry = 0, rz = 0}
+            }
+		})
         },
 		SceneConfig=
         {
