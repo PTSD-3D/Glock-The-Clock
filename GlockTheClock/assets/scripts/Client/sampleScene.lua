@@ -35,9 +35,14 @@ local Scene={
 	Platform_007=prefabs.Platform({
 		Transform = {position={x=-0.0,y=0.0,z=84.19429016113281},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=10.831353187561035}}}),
 	Player=prefabs.Player({ 
-		Transform = {position={x=-0.0,y=12.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.521728515625,y=3.521728515625,z=3.521728515625}}
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1,y=1,z=1}}
 	}),
     },
-		SceneConfig=sceneConfig.sampleScene()
+		SceneConfig=
+        {
+        PhysicsConfig={
+            Gravity = -55
+        }
+    }
 }
 return Scene

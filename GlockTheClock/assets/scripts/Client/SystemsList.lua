@@ -1,5 +1,4 @@
 local ns = require('namespace')
-local prefabs = require("Prefab")
 
 LOG("Loading systems...", LogLevel.Info, 1)
 -----------------------------------------------------------
@@ -18,13 +17,7 @@ function MoveSystem:requires()
 	return {"playerMove"}
 end
 
-local camChild = false;
--- function MoveSystem:initialize()
--- 	for _, entity in pairs(self.targets) do
--- 		local tr = entity.Transform
--- 		tr.setChildCamera()
--- 	end
--- end
+MoveSystem.camChild = false;
 
 function MoveSystem:update(dt)
 	for _, entity in pairs(self.targets) do
@@ -32,17 +25,15 @@ function MoveSystem:update(dt)
 		local rb = entity.Rigidbody
 		local vel = entity:get("playerMove").vel;
 		local vr = entity:get("playerMove").vrot;
-		-- cameraSetPos(vec3:new(0,80,0))
-		-- cameraLookAt(vec3:new(0,0,1000))
+
 		--makes the camera transform child of the player transform
-		if (not camChild) then
+		if (not self.camChild) then
 		 	tr:setChildCamera()
-		 	camChild = true
+		 	self.camChild = true
 		end
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
-		if(mouseDirection == nil) then LOG("mdir nil",LogLevel.Critical,1) end
 		mouseDirection =  mouseDirection * vr
 		local rot = vec3:new(0, -mouseDirection.x, 0)
 		pitchCamera(mouseDirection.y*dt)
@@ -69,8 +60,7 @@ function MoveSystem:update(dt)
 		--making sure the jump isn't overwritten
 		vtotal.y = rb:getLinearVelocity().y
 
-		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
-		if keyJustPressed(PTSDKeys.Space) then
+		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
 			--adds the force of the jump
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
@@ -81,34 +71,10 @@ function MoveSystem:update(dt)
 		end
 
 		rb:setLinearVelocity(vtotal)
-
 	end
 end
 
 Manager:addSystem(MoveSystem())
-
-
------------------------------------------------------------
-
-local BulletSystem = ns.class("BulletSystem",ns.System)
-
-function BulletSystem:requires() return {"bullet"} end
-
-function BulletSystem:update(dt)
-	for _, entity in pairs(self.targets) do
-		local bulletInfo = entity:get("bullet")
-		local movement = vec3:new(bulletInfo.speed*dt,0,0)
-		entity.Transform:translate(movement)
-		bulletInfo.lifetime = bulletInfo.lifetime - 1
-		if(bulletInfo.lifetime <= 0) then
-			--delete entity
-			Manager:removeEntity(entity)
-		end
-	end
-end
-
-Manager:addSystem(BulletSystem())
-
 -----------------------------------------------------------
 
 local DZSystem = ns.class("DZSystem",ns.System)
@@ -120,15 +86,6 @@ function DZSystem:initialize()
 	self.factor = 1
 end
 
-function DZSystem:update(dt)
-	-- local i = 0
-	-- for _, entity in pairs(self.targets) do
-	-- 	i = i + 1
-	-- end
-	-- print(i)
-end
-
-
 function DZSystem:onCollision(this, other, _)
 	local playerComp = other:get("playerMove")
 	if(playerComp ~= nil) then
@@ -138,10 +95,16 @@ function DZSystem:onCollision(this, other, _)
 end
 
 Manager:addSystem(DZSystem())
-
 -----------------------------------------------------------
 
 local RespawnSystem = ns.class("RespawnSystem",ns.System)
+
+function RespawnSystem:initialize()
+	ns.System.initialize(self)
+	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
+end
+
+function RespawnSystem:requires() return {"spawnpoint"} end
 
 function RespawnSystem:onPlayerDead(event)
 	if(self.spawnPoint==nil) then
@@ -155,23 +118,6 @@ function RespawnSystem:onPlayerDead(event)
 	event.player.Rigidbody:setAngularVelocity(v0)
 	event.player.Rigidbody:setPosition(nPos)
 end
-
-function RespawnSystem:requires() return {"spawnpoint"} end
-
-function RespawnSystem:update()
-	-- local i = 0
-	-- for _, entity in pairs(self.targets) do
-	-- 	i = i + 1
-	-- end
-	-- print(i)
-end
-
-function RespawnSystem:initialize()
-	ns.System.initialize(self)
-	self.spawnPt = nil
-	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
-end
-
 function RespawnSystem:onAddEntity(entity)
 	-- make sure theres only one
 	if(self.spawnPoint ~= nil) then 
@@ -181,10 +127,8 @@ function RespawnSystem:onAddEntity(entity)
 		LOG("Spawnpoint detected",LogLevel.Info,1)
 	end
 end
-
 Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
-
 
 LOG("Systems load completed", LogLevel.Info, 1)
 
