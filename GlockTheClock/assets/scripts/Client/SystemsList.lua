@@ -59,7 +59,6 @@ function MoveSystem:update(dt)
 		vtotal.y = rb:getLinearVelocity().y
 
 		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
-			print('aaaaaaa')
 			--adds the force of the jump
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
