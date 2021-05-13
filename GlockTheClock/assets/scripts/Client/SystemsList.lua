@@ -215,6 +215,41 @@ end
 Manager:addSystem(BulletSystem())
 
 -----------------------------------------------------------
+
+local TargetMoveSystem = ns.class("TargetMoveSystem", ns.System)
+
+function TargetMoveSystem:requires() return {"targetMove"} end
+
+function TargetMoveSystem:update(dt) 
+	for _, entity in pairs(self.targets) do
+		local targetMove = entity:get("targetMove")
+		local movement = vec3:new(targetMove.vx*dt, targetMove.vy*dt, targetMove.vz*dt)
+		entity.Transform:translate(movement)
+		local rotation = vec3:new(targetMove.rx*dt, targetMove.ry*dt, targetMove.rz*dt)
+		entity.Transform:rotate(rotation)
+	end
+end
+
+Manager:addSystem(TargetMoveSystem())
+-----------------------------------------------------------
+
+local TargetCollisionSystem = ns.class("TargetCollisionSystem", ns.System)
+
+function TargetCollisionSystem:requires() return {"targetCollision"} end
+
+function TargetCollisionSystem:onCollision(target, other, collision) 
+	if(other:has("bullet")) then
+		local targetCollision = target:get("targetCollision")
+		Manager:removeEntity(target)
+		LOG("Player scored " .. targetCollision.points .. " points")
+	end
+end
+
+function TargetCollisionSystem:update(dt)
+end
+
+Manager:addSystem(TargetCollisionSystem())
+-----------------------------------------------------------
 LOG("Systems load completed", LogLevel.Info, 1)
 
 

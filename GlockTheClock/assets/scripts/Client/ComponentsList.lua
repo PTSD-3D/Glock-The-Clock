@@ -10,5 +10,7 @@ ns.Component.create("boombox",{"volume","isPlaying","sound","channel"})
 ns.Component.create("topo")
 ns.Component.create("bullet",{"damage","speed","lifetime"},{damage=0,speed=3,lifetime=100})
 --lifetime is in frames
+ns.Component.create("targetMove",{"vx","vy","vz","rx","ry","rz"})
+ns.Component.create("targetCollision", {"points"})
 
 LOG("Components load completed", LogLevel.Info, 1)
