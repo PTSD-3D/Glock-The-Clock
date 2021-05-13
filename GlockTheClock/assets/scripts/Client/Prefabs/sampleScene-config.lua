@@ -1,8 +1,8 @@
-local sceneConfig = reqPrefab
+local sceneConfig = require('Prefab')
 function sceneConfig.sampleScene()
 	return {
 		PhysicsConfig = {
-			Gravity = 0
+			Gravity = -250
 		}
 	}
 end
