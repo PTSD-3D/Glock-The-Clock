@@ -4,13 +4,13 @@ local Scene={
  Entities={	
 	Goal=
 	{
-		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10,y=10,z=10}},
 		Components= {
 		}
     },
 	Spawn=
 	{
-		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10,y=10,z=10}},
 		Components= {
 			{ name = "spawnpoint", arguments = {true} }
 		}
@@ -32,21 +32,22 @@ local Scene={
 	Platform_006=prefabs.Platform({
 		Transform = {position={x=-5.200106620788574,y=0.0,z=63.49094009399414},rotation={x=-23.832374165250393,y=0.0,z=-0.0},scale={x=2.203453540802002,y=1.0,z=4.325438022613525}}}),
 	Platform_007=prefabs.Platform({
-		Transform = {position={x=-0.0,y=0.0,z=84.19429016113281},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=-10.831353187561035}}}),
+		Transform = {position={x=-0.0,y=0.0,z=84.19429016113281},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=10.831353187561035}}}),
 	Player=prefabs.Player({ 
 		Transform = {position={x=-0.0,y=12.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.521728515625,y=3.521728515625,z=3.521728515625}}
 	}),
 	RedTarget= prefabs.RedTarget({
-		Transform = {position={x=-0.0,y=0.0,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
-		Components= {
-			targetCollision = {points = 10}
+		Transform = {position={x=10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
+		targetCollision = {points = 10},
+		Components= {			
+			--{ name = "targetCollision", arguments = {10} }
 		}
 	}),
 	BlueTarget= prefabs.BlueTarget({
-		Transform = {position={x=-0.0,y=5.0,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
-		Components= {
-			targetCollision = {points = 100},
-			targetMove = {vx = 0.1, vy = 0.1, vz = 0.1, rx = 0.1, ry = 0, rz = 0}
+		Transform = {position={x=-10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
+		targetCollision = {points = 100},
+		targetMove = {vx = 0.1, vy = 0.1, vz = 0.1, rx = 0, ry = 10, rz = 0},
+		Components= {	
 		}
 	})
     },

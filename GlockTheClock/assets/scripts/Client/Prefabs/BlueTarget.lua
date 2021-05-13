@@ -1,4 +1,4 @@
-local pf = reqPrefab
+local pf = require('Prefab')
 
 function pf.BlueTarget(params)
 	return {
