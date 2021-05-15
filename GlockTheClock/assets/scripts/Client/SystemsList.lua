@@ -106,6 +106,8 @@ end
 
 function RespawnSystem:requires() return {"spawnpoint"} end
 
+-- ns.nonexisting("Hope we blow up")
+
 function RespawnSystem:onPlayerDead(event)
 	if(self.spawnPoint==nil) then
 		LOG("No respawn point set",LogLevel.Critical,1)
