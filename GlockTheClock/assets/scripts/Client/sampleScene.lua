@@ -1,12 +1,23 @@
 local prefabs = require('Prefab')
+local sceneConfig = require('Prefab')
 local Scene={
  Entities={	
 	Goal=
         {
 		Transform = {position={x=-34.03219223022461,y=-82.47428894042969,z=53.89710235595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=239.62815856933594,y=1.0,z=239.62815856933594}},
             Components= {
+				
             }
     },
+	Spawn=
+	{
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
+		Components= {
+			{ name = "spawnpoint", arguments = {true} }
+		}
+},
+	DeathZone_000=prefabs.DeadZone({
+		Transform = {position={x=-0.0,y=-100,z=0},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1000,y=1.0,z=1000}}}),
 	Platform_000=prefabs.Platform({
 		Transform = {position={x=-0.0,y=0.0,z=-6.6010847091674805},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10.905817031860352,y=1.0,z=10.831353187561035}}}),
 	Platform_001=prefabs.Platform({
@@ -27,11 +38,6 @@ local Scene={
 		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1,y=1,z=1}}
 	}),
     },
-		SceneConfig=
-        {
-        PhysicsConfig={
-            Gravity = -55
-        }
-    }
+		SceneConfig=prefabs.sampleScene()
 }
 return Scene
