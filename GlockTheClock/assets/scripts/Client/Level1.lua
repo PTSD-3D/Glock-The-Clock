@@ -72,7 +72,11 @@ local Scene={
         {
         PhysicsConfig={
             Gravity = -75
-        }
+        },
+				GraphicsConfig={
+					LockMouse = true
+				}
+
     }
 }
 return Scene
