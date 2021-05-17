@@ -13,9 +13,7 @@ end
 
 function MoveSystem:Shoot(entity,dt)
 
-	local x = getMouseRelativePosition().x
-	local y = getMouseRelativePosition().y
-	local dest = entity.Rigidbody:getRayDest(x,y)
+	local dest = entity.Rigidbody:getCamOrientation()
 	
 	-- local dir = dest - entity.Transform.position
 
@@ -24,7 +22,7 @@ function MoveSystem:Shoot(entity,dt)
 			position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},
 			rotation={x=0.0,y=0.0,z=0.0},
 			scale={x=1,y= 1,z=1}},
-		direction= {0,0,0}
+		direction= dest
 		}
 	))
 end
@@ -107,8 +105,14 @@ function BulletSystem:requires() return {"bullet"} end
 function BulletSystem:update(dt)
 	for _, entity in pairs(self.targets) do
 		local bulletInfo = entity:get("bullet")
-		local movement = vec3:new(bulletInfo.speed*dt,0,0)
-		entity.Transform:translate(movement)
+
+		-- local movement = vec3:new(bulletInfo.speed*dt,0,0)
+		-- entity.Transform:translate(movement)
+		local dir = bulletInfo.direction
+		dir = dir:normalize()
+		entity.Transform:translate(dir)
+		print(dir)
+
 		bulletInfo.lifetime = bulletInfo.lifetime - 1
 		if(bulletInfo.lifetime <= 0) then
 			--delete entity
