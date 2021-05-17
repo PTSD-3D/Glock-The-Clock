@@ -3,11 +3,10 @@ local sceneConfig = require('Prefab')
 local Scene={
  Entities={	
 	Goal=
-        {
-		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},
-            Components= {
-				
-            }
+	{
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10,y=10,z=10}},
+		Components= {
+		}
     },
 	Spawn=
 	{
@@ -15,7 +14,7 @@ local Scene={
 		Components= {
 			{ name = "spawnpoint", arguments = {true} }
 		}
-},
+	},
 	DeathZone_000=prefabs.DeadZone({
 		Transform = {position={x=-0.0,y=-100,z=0},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1000,y=1.0,z=1000}}}),
 	Platform_000=prefabs.Platform({
@@ -37,7 +36,16 @@ local Scene={
 	Player=prefabs.Player({ 
 		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1,y=1,z=1}}
 	}),
+	RedTarget= prefabs.RedTarget({
+		Transform = {position={x=10,y=30,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	BlueTarget= prefabs.BlueTarget({
+		Transform = {position={x=-10,y=10,z=80},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=0.5}},
+		targetCollision = {points = 100},
+		targetMove = {range = {10,10,0}, rotation = {0,5,0}, speed = {5,5,0}, trig = {"cos", "sin", "sin"}},
+	})
     },
-		SceneConfig=prefabs.sampleScene()
+	SceneConfig=sceneConfig.sampleScene()
 }
 return Scene

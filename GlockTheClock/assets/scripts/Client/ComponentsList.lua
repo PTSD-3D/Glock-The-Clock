@@ -12,5 +12,7 @@ ns.Component.create("bullet",{"damage","speed","lifetime"},{damage=0,speed=3,lif
 ns.Component.create("death",{"active"},{active=true})
 ns.Component.create("spawnpoint")
 --lifetime is in frames
+ns.Component.create("targetMove",{"range", "rotation", "speed", "trig", "angle"})
+ns.Component.create("targetCollision", {"points"})
 
 LOG("Components load completed", LogLevel.Info, 1)
