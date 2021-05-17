@@ -29,9 +29,9 @@ function MoveSystem:update(dt)
 		-- cameraSetPos(vec3:new(0,80,0))
 		-- cameraLookAt(vec3:new(0,0,1000))
 		--makes the camera transform child of the player transform
-		if (not camChild) then
+		if (not self.camChild) then
 		 	tr:setChildCamera()
-		 	camChild = true
+		 	self.camChild = true
 		end
 
 		--rotation + camera
@@ -64,7 +64,7 @@ function MoveSystem:update(dt)
 		vtotal.y = rb:getLinearVelocity().y
 
 		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
-		if keyJustPressed(PTSDKeys.Space) then
+		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
 			--adds the force of the jump
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
@@ -135,50 +135,7 @@ function RespawnSystem:onAddEntity(entity)
 	end
 end
 Manager:addSystem(RespawnSystem())
------------------------------------------------------------
 
-local RespawnSystem = ns.class("RespawnSystem",ns.System)
-
-function RespawnSystem:onPlayerDead(event)
-	if(self.spawnPoint==nil) then
-		LOG("No respawn point set",LogLevel.Critical,1)
-		return
-	end
-	local p = self.spawnPoint.Transform.position
-	local nPos = vec3:new(p.x,p.y,p.z)
-	local v0 = vec3:new(0,0,0)
-	event.player.Rigidbody:setLinearVelocity(v0)
-	event.player.Rigidbody:setAngularVelocity(v0)
-	event.player.Rigidbody:setPosition(nPos)
-end
-
-function RespawnSystem:requires() return {"spawnpoint"} end
-
-function RespawnSystem:update()
-	-- local i = 0
-	-- for _, entity in pairs(self.targets) do
-	-- 	i = i + 1
-	-- end
-	-- print(i)
-end
-
-function RespawnSystem:initialize()
-	ns.System.initialize(self)
-	self.spawnPt = nil
-	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
-end
-
-function RespawnSystem:onAddEntity(entity)
-	-- make sure theres only one
-	if(self.spawnPoint ~= nil) then 
-		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning,1)
-	else
-		self.spawnPoint = entity
-		LOG("Spawnpoint detected",LogLevel.Info,1)
-	end
-end
-
-Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
 
 local TargetMoveSystem = ns.class("TargetMoveSystem", ns.System)
