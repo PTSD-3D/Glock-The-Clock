@@ -15,7 +15,7 @@ function MoveSystem:Shoot(entity,dt)
 
 	local x = getMouseRelativePosition().x
 	local y = getMouseRelativePosition().y
-	local dest = entity.Rigidbody.getRayDest(x,y)
+	local dest = entity.Rigidbody:getRayDest(x,y)
 	
 	-- local dir = dest - entity.Transform.position
 
