@@ -9,6 +9,13 @@ function ns.deathEvent:initialize(player)
 	LOG("Firing DeathEvent")
 end
 -----------------------------------------------------------
+ns.goalEvent = ns.class("goalEvent")
+
+function ns.goalEvent:initialize(player)
+	self.player = player
+	LOG("Firing GoalEvent")
+end
+-----------------------------------------------------------
 
 --Define new systems here
 local MoveSystem = ns.class("MoveSystem",ns.System)
@@ -132,6 +139,24 @@ end
 Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
 
+local GoalSystem = ns.class("GoalSystem",ns.System)
+
+function GoalSystem:requires() return {"goal"} end
+
+function GoalSystem:initialize()
+	ns.System.initialize(self)
+end
+
+function GoalSystem:onCollision(_,other,_)
+	if(other:has("playerMove")) then
+		LOG("WOW DANIEL, NICE MOVES")
+		Manager.eventManager:fireEvent(ns.goalEvent(other))
+	end
+end
+
+Manager:addSystem(GoalSystem())
+
+--------------------------------------------
 LOG("Systems load completed", LogLevel.Info, 1)
 
 
