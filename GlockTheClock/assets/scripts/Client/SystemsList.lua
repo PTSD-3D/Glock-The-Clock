@@ -18,13 +18,7 @@ function MoveSystem:requires()
 	return {"playerMove"}
 end
 
-local camChild = false;
--- function MoveSystem:initialize()
--- 	for _, entity in pairs(self.targets) do
--- 		local tr = entity.Transform
--- 		tr.setChildCamera()
--- 	end
--- end
+MoveSystem.camChild = false;
 
 function MoveSystem:update(dt)
 	for _, entity in pairs(self.targets) do
@@ -86,28 +80,7 @@ function MoveSystem:update(dt)
 end
 
 Manager:addSystem(MoveSystem())
-
-
 -----------------------------------------------------------
-
-local BulletSystem = ns.class("BulletSystem",ns.System)
-
-function BulletSystem:requires() return {"bullet"} end
-
-function BulletSystem:update(dt)
-	for _, entity in pairs(self.targets) do
-		local bulletInfo = entity:get("bullet")
-		local movement = vec3:new(bulletInfo.speed*dt,0,0)
-		entity.Transform:translate(movement)
-		bulletInfo.lifetime = bulletInfo.lifetime - 1
-		if(bulletInfo.lifetime <= 0) then
-			--delete entity
-			Manager:removeEntity(entity)
-		end
-	end
-end
-
-Manager:addSystem(BulletSystem())
 
 local DZSystem = ns.class("DZSystem",ns.System)
 
@@ -118,16 +91,7 @@ function DZSystem:initialize()
 	self.factor = 1
 end
 
-function DZSystem:update(dt)
-	-- local i = 0
-	-- for _, entity in pairs(self.targets) do
-	-- 	i = i + 1
-	-- end
-	-- print(i)
-end
-
-
-function DZSystem:onCollision(_, other, _)
+function DZSystem:onCollision(this, other, _)
 	local playerComp = other:get("playerMove")
 	if(playerComp ~= nil) then
 		print("Player fell to DEATH")
@@ -136,7 +100,41 @@ function DZSystem:onCollision(_, other, _)
 end
 
 Manager:addSystem(DZSystem())
+-----------------------------------------------------------
 
+local RespawnSystem = ns.class("RespawnSystem",ns.System)
+
+function RespawnSystem:initialize()
+	ns.System.initialize(self)
+	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
+end
+
+function RespawnSystem:requires() return {"spawnpoint"} end
+
+-- ns.nonexisting("Hope we blow up")
+
+function RespawnSystem:onPlayerDead(event)
+	if(self.spawnPoint==nil) then
+		LOG("No respawn point set",LogLevel.Critical,1)
+		return
+	end
+	local p = self.spawnPoint.Transform.position
+	local nPos = vec3:new(p.x,p.y,p.z)
+	local v0 = vec3:new(0,0,0)
+	event.player.Rigidbody:setLinearVelocity(v0)
+	event.player.Rigidbody:setAngularVelocity(v0)
+	event.player.Rigidbody:setPosition(nPos)
+end
+function RespawnSystem:onAddEntity(entity)
+	-- make sure theres only one
+	if(self.spawnPoint ~= nil) then 
+		LOG("OOPSIE There are multiple spawn points",LogLevel.Warning,1)
+	else
+		self.spawnPoint = entity
+		LOG("Spawnpoint detected",LogLevel.Info,1)
+	end
+end
+Manager:addSystem(RespawnSystem())
 -----------------------------------------------------------
 
 local RespawnSystem = ns.class("RespawnSystem",ns.System)
