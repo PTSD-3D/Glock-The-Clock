@@ -1,4 +1,6 @@
 local ns = require('namespace')
+local prefabs = require('Prefab')
+local resources = require('resources')
 
 LOG("Loading systems...", LogLevel.Info, 1)
 
@@ -7,6 +9,24 @@ local MoveSystem = ns.class("MoveSystem",ns.System)
 
 function MoveSystem:requires()
 	return {"playerMove"}
+end
+
+function MoveSystem:Shoot(entity,dt)
+
+	local x = getMouseRelativePosition().x
+	local y = getMouseRelativePosition().y
+	local dest = entity.Rigidbody.getRayDest(x,y)
+	
+	-- local dir = dest - entity.Transform.position
+
+	ns.spawnEntity(Manager,prefabs.Bullet({
+		Transform = {
+			position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},
+			rotation={x=0.0,y=0.0,z=0.0},
+			scale={x=1,y= 1,z=1}},
+		direction= {0,0,0}
+		}
+	))
 end
 
 MoveSystem.camChild = false;
@@ -67,7 +87,10 @@ function MoveSystem:update(dt)
 			--this is only necessary because the player is on the void
 			vtotal.y = 0
 		end
-
+		
+		if keyJustPressed(PTSDKeys.H) or  mouseButtonJustPressed(PTSDMouseButton.Left) then
+			self:Shoot(entity, dt)
+		end
 		rb:setLinearVelocity(vtotal)
 	end
 end
