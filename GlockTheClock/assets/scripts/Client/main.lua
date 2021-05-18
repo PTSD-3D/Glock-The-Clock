@@ -20,6 +20,6 @@ createMainMenuUIButtons()
 createLevelSelectorUIButtons()
 createPauseMenuUIButtons()
 
-showMainMenuUI()
+--showMainMenuUI()
 
 LOG("Test.lua completed")
