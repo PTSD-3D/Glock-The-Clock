@@ -1,6 +1,5 @@
 local ns = require('namespace')
 
-
 local status, ret = pcall(ns.loadScene, Manager, require('Level1'))
 if status then
 	LOG("Scene loaded correctly")
@@ -15,14 +14,14 @@ end
 -- UI Usage example
 setUIMouseCursor("TaharezLook/MouseArrow")
 
-setWindowVisible("TitleWindow", true)
+--setWindowVisible("TitleWindow", true)
 
-createButton("PushButton", "CEGUI es facilito", "TaharezLook/Button",vec2:new(300, 200), vec2:new(200, 50))
-setButtonFunction("PushButton","showTaiFighterUI")
+--createButton("PushButton", "CEGUI es facilito", "TaharezLook/Button",vec2:new(300, 200), vec2:new(200, 50))
+--setButtonFunction("PushButton","showTaiFighterUI")
 
-createButton("ExitButton", "Exit", "TaharezLook/Button",vec2:new(300, 300), vec2:new(200, 50))
-setButtonFunction("ExitButton","exitCallback")
+--createButton("ExitButton", "Exit", "TaharezLook/Button",vec2:new(300, 300), vec2:new(200, 50))
+--setButtonFunction("ExitButton","exitCallback")
 
-showTaiFighterUI()
+--showTaiFighterUI()
 
 LOG("Test.lua completed")
