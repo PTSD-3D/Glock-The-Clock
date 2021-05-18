@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="LevelSelector" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="TaharezLook/StaticImage" name="LevelSelectorBg" >
+            <Property name="Area" value="{{0,0},{0,0},{0,1920},{0,1080}}" />
+            <Property name="Image" value="PayumLookBackground/Bg" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Window type="TaharezLook/StaticText" name="StaticText" >
+                <Property name="Area" value="{{0,1036},{0,722},{0,1404},{0,864}}" />
+                <Property name="Font" value="LemonMilk-50" />
+                <Property name="Text" value="00:00" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="HorzScrollPageSize" value="358" />
+                <Property name="VertScrollPageSize" value="132" />
+                <Property name="HorzScrollDocumentSize" value="360" />
+                <Property name="VertScrollDocumentSize" value="102.295" />
+            </Window>
+        </Window>
+        <Window type="TaharezLook/StaticImage" name="LevelImg" >
+            <Property name="Area" value="{{0,852},{0,70},{0,1840},{0,638}}" />
+            <Property name="Image" value="PayumLook/Level1" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AlwaysOnTop" value="true" />
+        </Window>
+        <Window type="TaharezLook/StaticImage" name="StopWatch" >
+            <Property name="Area" value="{{0,848},{0,720},{0,980},{0,868}}" />
+            <Property name="Image" value="PayumLook/StopWatch" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AlwaysOnTop" value="true" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="TaharezLook/StaticImage" name="3Medal" >
+            <Property name="Area" value="{{0,1448},{0,712},{0,1580},{0,870}}" />
+            <Property name="Image" value="PayumLook/3Medal" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AlwaysOnTop" value="true" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="TaharezLook/StaticImage" name="1Medal" >
+            <Property name="Area" value="{{0,1448},{0,712},{0,1580},{0,870}}" />
+            <Property name="Image" value="PayumLook/1Medal" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AlwaysOnTop" value="true" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="TaharezLook/StaticImage" name="2Medal" >
+            <Property name="Area" value="{{0,1448},{0,712},{0,1580},{0,870}}" />
+            <Property name="Image" value="PayumLook/2Medal" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AlwaysOnTop" value="true" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="TaharezLook/StaticImage" name="Star" >
+            <Property name="Area" value="{{0,1682},{0,720},{0,1824},{0,858}}" />
+            <Property name="Image" value="PayumLook/Star" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AlwaysOnTop" value="true" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+    </Window>
+</GUILayout>

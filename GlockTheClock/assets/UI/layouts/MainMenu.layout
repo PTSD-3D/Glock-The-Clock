@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="MainMenu" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="TaharezLook/StaticImage" name="MainMenuBg" >
+            <Property name="Area" value="{{0,0},{0,0},{0,1920},{0,1080}}" />
+            <Property name="Image" value="PayumLookBackground/Bg" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        </Window>
+        <Window type="TaharezLook/StaticText" name="GlockTheClockTitle" >
+            <Property name="Area" value="{{0,16},{0,8},{0,946},{0,116}}" />
+            <Property name="Font" value="LemonMilk-50" />
+            <Property name="Text" value="Glock The Clock" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="TextColours" value="tl:FFFFFFFF tr:FFFFFFFF bl:FF8FFAF6 br:FF8FFAF6" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+            <Property name="HorzScrollPageSize" value="920" />
+            <Property name="VertScrollPageSize" value="98" />
+            <Property name="HorizontalAlignment" value="Centre" />
+            <Property name="HorzScrollDocumentSize" value="924" />
+            <Property name="VertScrollDocumentSize" value="102.295" />
+        </Window>
+    </Window>
+</GUILayout>
