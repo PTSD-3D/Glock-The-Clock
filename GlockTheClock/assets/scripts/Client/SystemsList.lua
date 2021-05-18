@@ -1,4 +1,5 @@
 local ns = require('namespace')
+local prefabs = require("Prefab")
 
 LOG("Loading systems...", LogLevel.Info, 1)
 -----------------------------------------------------------
@@ -32,7 +33,8 @@ function MoveSystem:update(dt)
 		local rb = entity.Rigidbody
 		local vel = entity:get("playerMove").vel;
 		local vr = entity:get("playerMove").vrot;
-
+		-- cameraSetPos(vec3:new(0,80,0))
+		-- cameraLookAt(vec3:new(0,0,1000))
 		--makes the camera transform child of the player transform
 		if (not self.camChild) then
 		 	tr:setChildCamera()
@@ -41,6 +43,7 @@ function MoveSystem:update(dt)
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
+		if(mouseDirection == nil) then LOG("mdir nil",LogLevel.Critical,1) end
 		mouseDirection =  mouseDirection * vr
 		local rot = vec3:new(0, -mouseDirection.x, 0)
 		pitchCamera(mouseDirection.y*dt)
@@ -67,6 +70,7 @@ function MoveSystem:update(dt)
 		--making sure the jump isn't overwritten
 		vtotal.y = rb:getLinearVelocity().y
 
+		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
 		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
 			--adds the force of the jump
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
@@ -78,6 +82,7 @@ function MoveSystem:update(dt)
 		end
 
 		rb:setLinearVelocity(vtotal)
+
 	end
 end
 
@@ -137,6 +142,7 @@ function RespawnSystem:onAddEntity(entity)
 	end
 end
 Manager:addSystem(RespawnSystem())
+
 -----------------------------------------------------------
 
 local GoalSystem = ns.class("GoalSystem",ns.System)
@@ -158,5 +164,57 @@ Manager:addSystem(GoalSystem())
 
 --------------------------------------------
 LOG("Systems load completed", LogLevel.Info, 1)
+local TargetMoveSystem = ns.class("TargetMoveSystem", ns.System)
 
+function TargetMoveSystem:requires() return {"targetMove"} end
 
+function TargetMoveSystem:magnitude(x, y, z)
+	return math.sqrt(x*x+y*y+z*z) end
+
+function TargetMoveSystem:trigonometry(targetMove, dt)
+	local move = {}
+	local trig
+	for i = 1, 3 do
+		if(targetMove.trig[i] == "cos") then trig = math.cos
+		else trig = math.sin
+		end
+		--division entre 60 para que el rango sea mas intuitivo
+		move[i] = targetMove.range[i]/60*targetMove.speed[i]*dt*trig(math.rad(targetMove.angle[i]))
+		targetMove.angle[i] = targetMove.angle[i] + targetMove.speed[i]*dt
+	end
+	return vec3:new(move[1], move[2], move[3])
+end
+
+function TargetMoveSystem:update(dt) 
+	for _, entity in pairs(self.targets) do
+		local targetMove = entity:get("targetMove")
+		entity.Transform:translate(self:trigonometry(targetMove, dt))
+		local rot = {}
+		for i = 1, 3 do
+			rot[i] = targetMove.rotation[i]*dt
+		end
+		entity.Transform:rotate(vec3:new(rot[1], rot[2], rot[3]))
+	end
+end
+
+Manager:addSystem(TargetMoveSystem())
+-----------------------------------------------------------
+
+local TargetCollisionSystem = ns.class("TargetCollisionSystem", ns.System)
+
+function TargetCollisionSystem:requires() return {"targetCollision"} end
+
+function TargetCollisionSystem:onCollision(target, other, collision)
+	if(other:has("playerMove")) then
+		local targetCollision = target:get("targetCollision")
+		Manager:removeEntity(target)
+		LOG("Player scored " .. targetCollision.points .. " points")
+	end
+end
+
+function TargetCollisionSystem:update(dt)
+end
+
+Manager:addSystem(TargetCollisionSystem())
+-----------------------------------------------------------
+LOG("Systems load completed", LogLevel.Info, 1)
