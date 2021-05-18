@@ -30,8 +30,11 @@ local Resources = {
 		}
 	},
 	UILayouts = {	
-		TaiFighterLayout = {
-			path = "TaiFighter.layout", type=UIFileType.Layout
+		MainMenuLayout = {
+			path = "MainMenu.layout", type=UIFileType.Layout
+		},
+		LevelSelectorLayout = {
+			path = "LevelSelector.layout", type=UIFileType.Layout
 		},
 		PauseLayout = {
 			path = "Pause.layout", type=UIFileType.Layout
