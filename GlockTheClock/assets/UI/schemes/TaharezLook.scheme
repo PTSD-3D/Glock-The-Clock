@@ -4,6 +4,7 @@
 	<Font filename="DejaVuSans-12.font" />
 	<Font filename="DejaVuSans-24.font" />
 	<Font filename="LemonMilk-32.font" />
+	<Font filename="LemonMilk-41.font" />
 	<Font filename="LemonMilk-50.font" />
 	<LookNFeel filename="TaharezLook.looknfeel" />
 	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />

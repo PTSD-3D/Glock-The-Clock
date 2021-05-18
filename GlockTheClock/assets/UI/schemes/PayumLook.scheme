@@ -5,5 +5,6 @@
 	<LookNFeel filename="PayumLook.looknfeel" />
 	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />
 	<FalagardMapping windowType="PayumLook/StaticImage" targetType="DefaultWindow" renderer="Core/StaticImage" lookNFeel="PayumLook/StaticImage" />
+	<FalagardMapping windowType="PayumLook/Button"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/Button" />
 </GUIScheme>
 

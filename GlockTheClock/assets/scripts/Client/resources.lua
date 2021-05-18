@@ -27,6 +27,9 @@ local Resources = {
 	UISchemes = {
 		TaharezLookScheme = {
 			path = "TaharezLook.scheme", type=UIFileType.Scheme
+		},
+		PayumLookScheme = {
+			path = "PayumLook.scheme", type=UIFileType.Scheme
 		}
 	},
 	UILayouts = {	
@@ -39,8 +42,8 @@ local Resources = {
 		PauseLayout = {
 			path = "Pause.layout", type=UIFileType.Layout
 		},
-		TitleLayout = {
-			path = "Title.layout", type=UIFileType.Layout
+		HUDLayout = {
+			path = "PayumHUD.layout", type=UIFileType.Layout
 		}
 	},
 	Meshes = {

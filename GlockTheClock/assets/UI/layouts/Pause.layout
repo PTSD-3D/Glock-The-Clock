@@ -9,9 +9,11 @@
             <Property name="Alpha" value="0.4" />
             <Property name="Image" value="PayumLookBackground/Bg" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="TaharezLook/StaticText" name="PauseTitle" >
-            <Property name="Area" value="{{0,0},{0,14},{0,310},{0,122}}" />
+            <Property name="Area" value="{{0,0},{0,11},{0,206},{0,119}}" />
             <Property name="Font" value="LemonMilk-50" />
             <Property name="Text" value="Pause" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
@@ -19,11 +21,11 @@
             <Property name="TextColours" value="tl:FFFFFFFF tr:FFFFFFFF bl:FF8FFAF6 br:FF8FFAF6" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
-            <Property name="HorzScrollPageSize" value="310" />
+            <Property name="HorzScrollPageSize" value="206" />
             <Property name="VertScrollPageSize" value="108" />
             <Property name="HorizontalAlignment" value="Centre" />
-            <Property name="HorzScrollDocumentSize" value="311" />
-            <Property name="VertScrollDocumentSize" value="102.295" />
+            <Property name="HorzScrollDocumentSize" value="208" />
+            <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
     </Window>
 </GUILayout>

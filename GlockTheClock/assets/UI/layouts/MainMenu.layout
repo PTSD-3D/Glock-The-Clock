@@ -10,18 +10,18 @@
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
         </Window>
         <Window type="TaharezLook/StaticText" name="GlockTheClockTitle" >
-            <Property name="Area" value="{{0,16},{0,8},{0,946},{0,116}}" />
+            <Property name="Area" value="{{0,350},{0,-600},{0,972},{0,-492}}" />
             <Property name="Font" value="LemonMilk-50" />
             <Property name="Text" value="Glock The Clock" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="TextColours" value="tl:FFFFFFFF tr:FFFFFFFF bl:FF8FFAF6 br:FF8FFAF6" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
-            <Property name="HorzScrollPageSize" value="920" />
-            <Property name="VertScrollPageSize" value="98" />
-            <Property name="HorizontalAlignment" value="Centre" />
-            <Property name="HorzScrollDocumentSize" value="924" />
-            <Property name="VertScrollDocumentSize" value="102.295" />
+            <Property name="VerticalAlignment" value="Bottom" />
+            <Property name="HorzScrollPageSize" value="622" />
+            <Property name="VertScrollPageSize" value="108" />
+            <Property name="HorzScrollDocumentSize" value="617" />
+            <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
     </Window>
 </GUILayout>

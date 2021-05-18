@@ -62,6 +62,10 @@ function MoveSystem:update(dt)
 			vtotal.y = 0
 		end
 
+		if keyPressed(PTSDKeys.P) then
+			showPauseUI()
+		end
+
 		rb:setLinearVelocity(vtotal)
 
 	end

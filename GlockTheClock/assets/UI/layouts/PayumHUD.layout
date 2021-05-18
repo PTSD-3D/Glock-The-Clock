@@ -5,7 +5,7 @@
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
         <Window type="TaharezLook/StaticText" name="Counter" >
-            <Property name="Area" value="{{0,649},{0,26},{0,1205},{0,134}}" />
+            <Property name="Area" value="{{0,439},{0,25},{0,815},{0,97}}" />
             <Property name="Font" value="LemonMilk-50" />
             <Property name="Text" value="00:00:00" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
@@ -13,31 +13,31 @@
             <Property name="TextColours" value="tl:FFFFFFFF tr:FFFFFFFF bl:FF8FFAF6 br:FF8FFAF6" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
-            <Property name="HorzScrollPageSize" value="556" />
-            <Property name="VertScrollPageSize" value="108" />
+            <Property name="HorzScrollPageSize" value="376" />
+            <Property name="VertScrollPageSize" value="72" />
             <Property name="HorizontalAlignment" value="Centre" />
-            <Property name="HorzScrollDocumentSize" value="554" />
-            <Property name="VertScrollDocumentSize" value="102.295" />
+            <Property name="HorzScrollDocumentSize" value="374" />
+            <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
         <Window type="TaharezLook/StaticImage" name="Clock" >
-            <Property name="Area" value="{{0,1174},{0,12},{0,1294},{0,140}}" />
+            <Property name="Area" value="{{0,778},{0,14},{0,866},{0,108}}" />
             <Property name="Image" value="PayumLook/StopWatch" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="TaharezLook/StaticText" name="Targets" >
-            <Property name="Area" value="{{0,1734},{0,160},{0,1880},{0,238}}" />
+            <Property name="Area" value="{{0,1164},{0,98},{0,1266},{0,176}}" />
             <Property name="Font" value="LemonMilk-32" />
             <Property name="Text" value="0/12" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="TextColours" value="tl:FF8FFAF6 tr:FF8FFAF6 bl:FF8FFAF6 br:FF8FFAF6" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
-            <Property name="HorzScrollPageSize" value="146" />
+            <Property name="HorzScrollPageSize" value="102" />
             <Property name="VertScrollPageSize" value="78" />
-            <Property name="HorzScrollDocumentSize" value="139" />
-            <Property name="VertScrollDocumentSize" value="65.4688" />
+            <Property name="HorzScrollDocumentSize" value="95" />
+            <Property name="VertScrollDocumentSize" value="43.6512" />
         </Window>
     </Window>
 </GUILayout>
