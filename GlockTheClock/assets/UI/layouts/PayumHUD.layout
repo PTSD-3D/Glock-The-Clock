@@ -5,22 +5,22 @@
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
         <Window type="TaharezLook/StaticText" name="Counter" >
-            <Property name="Area" value="{{0.34,0},{0.035,0},{0.34,376},{0.035,72}}" />
+            <Property name="Area" value="{{0.385,0},{0.035,0},{0.385,242},{0.035,72}}" />
             <Property name="Font" value="LemonMilk-50" />
-            <Property name="Text" value="00:00:00" />
+            <Property name="Text" value="00:00" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AlwaysOnTop" value="true" />
             <Property name="TextColours" value="tl:FFFFFFFF tr:FFFFFFFF bl:FF8FFAF6 br:FF8FFAF6" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
-            <Property name="HorzScrollPageSize" value="376" />
+            <Property name="HorzScrollPageSize" value="242" />
             <Property name="VertScrollPageSize" value="72" />
             <Property name="HorizontalAlignment" value="Centre" />
-            <Property name="HorzScrollDocumentSize" value="374" />
+            <Property name="HorzScrollDocumentSize" value="243" />
             <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
         <Window type="TaharezLook/StaticImage" name="Clock" >
-            <Property name="Area" value="{{0.6,0},{0.01,0},{0.68,0},{0.16,0}}" />
+            <Property name="Area" value="{{0.7,0},{0.01,0},{0.77,0},{0.16,0}}" />
             <Property name="Image" value="PayumLook/StopWatch" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="FrameEnabled" value="false" />
