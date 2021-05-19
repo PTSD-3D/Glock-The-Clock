@@ -67,5 +67,17 @@
             <Property name="HorzScrollDocumentSize" value="243" />
             <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
+        <Window type="PayumLook/Button" name="Button" >
+            <Property name="Area" value="{{0.04,0},{0.1,0},{0.34,0},{0.23,0}}" />
+        </Window>
+        <Window type="PayumLook/Button" name="Button2" >
+            <Property name="Area" value="{{0.04,0},{0.3,0},{0.34,0},{0.43,0}}" />
+        </Window>
+        <Window type="PayumLook/Button" name="Button3" >
+            <Property name="Area" value="{{0.04,0},{0.5,0},{0.34,0},{0.63,0}}" />
+        </Window>
+        <Window type="PayumLook/Button" name="Button4" >
+            <Property name="Area" value="{{0.065,0},{0.7,0},{0.315,0},{0.83,0}}" />
+        </Window>
     </Window>
 </GUILayout>

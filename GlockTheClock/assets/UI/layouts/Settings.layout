@@ -49,5 +49,14 @@
             <Property name="FrameEnabled" value="false" />
             <Property name="ImageColours" value="tl:FF003764 tr:FF003764 bl:FF003764 br:FF003764" />
         </Window>
+        <Window type="PayumLook/ButtonLeftArrow" name="ButtonLeftArrow" >
+            <Property name="Area" value="{{0.17,0},{0.35,0},{0.23,0},{0.45,0}}" />
+        </Window>
+        <Window type="PayumLook/ButtonRightArrow" name="ButtonRightArrow" >
+            <Property name="Area" value="{{0.768,0},{0.35,0},{0.828,0},{0.45,0}}" />
+        </Window>
+        <Window type="PayumLook/Button" name="Button" >
+            <Property name="Area" value="{{0.35,0},{0.65,0},{0.65,0},{0.78,0}}" />
+        </Window>
     </Window>
 </GUILayout>

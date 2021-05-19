@@ -21,6 +21,6 @@ createLevelSelectorUIButtons()
 createPauseMenuUIButtons()
 createSettingsMenuUIButtons()
 
-showSettingsMenuUI()
+showMainMenuUI()
 
 LOG("Test.lua completed")

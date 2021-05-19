@@ -1,12 +1,13 @@
 --Main menu UI
 
 function createMainMenuUIButtons()
-	createButton("LevelsButton", "Levels", "PayumLook/Button", "LemonMilk-41", vec2:new(450, 180), vec2:new(400, 100))
+	createButton("LevelsButton", "Levels", "PayumLook/Button", "LemonMilk-41", vec2:new(0.35, 0.25), vec2:new(0.3, 0.13))
 	setButtonFunction("LevelsButton","switchToLevelSelector")
 
-	createButton("SettingsButton", "Settings", "PayumLook/Button", "LemonMilk-41", vec2:new(450, 340), vec2:new(400, 100))
+	createButton("SettingsButton", "Settings", "PayumLook/Button", "LemonMilk-41", vec2:new(0.35, 0.45), vec2:new(0.3, 0.13))
+	setButtonFunction("SettingsButton","switchToSettingsMenu")
 
-	createButton("ExitButton", "Exit", "PayumLook/Button", "LemonMilk-41", vec2:new(450, 500), vec2:new(400, 100))
+	createButton("ExitButton", "Exit", "PayumLook/Button", "LemonMilk-41", vec2:new(0.35, 0.65), vec2:new(0.3, 0.13))
 	setButtonFunction("ExitButton","exitCallback")
 
 	setWindowVisible("LevelsButton", false)
@@ -35,13 +36,13 @@ end
 --Level selector UI
 
 function createLevelSelectorUIButtons()
-	createButton("Level1Button", "Level 1", "PayumLook/Button", "LemonMilk-41", vec2:new(70, 60), vec2:new(400, 100))
+	createButton("Level1Button", "Level 1", "PayumLook/Button", "LemonMilk-41", vec2:new(0.04, 0.1), vec2:new(0.3, 0.13))
 
-	createButton("Level2Button", "Level 2", "PayumLook/Button", "LemonMilk-41", vec2:new(70, 210), vec2:new(400, 100))
+	createButton("Level2Button", "Level 2", "PayumLook/Button", "LemonMilk-41", vec2:new(0.04, 0.3), vec2:new(0.3, 0.13))
 
-	createButton("Level3Button", "Level 3", "PayumLook/Button", "LemonMilk-41", vec2:new(70, 360), vec2:new(400, 100))
+	createButton("Level3Button", "Level 3", "PayumLook/Button", "LemonMilk-41", vec2:new(0.04, 0.5), vec2:new(0.3, 0.13))
 
-	createButton("PlayButton", "Play", "PayumLook/Button", "LemonMilk-41", vec2:new(70, 510), vec2:new(400, 100))
+	createButton("PlayButton", "Play", "PayumLook/Button", "LemonMilk-41", vec2:new(0.065, 0.7), vec2:new(0.25, 0.13))
 	setButtonFunction("PlayButton","switchToLevel")
 
 	setWindowVisible("Level1Button", false)
@@ -73,22 +74,21 @@ end
 --Pause menu UI
 
 function createPauseMenuUIButtons()
-	createButton("ResumeButton", "Resume", "PayumLook/Button", "LemonMilk-41", vec2:new(450, 180), vec2:new(400, 100))
+	createButton("ResumeButton", "Resume", "PayumLook/Button", "LemonMilk-41", vec2:new(0.35, 0.25), vec2:new(0.3, 0.13))
 	setButtonFunction("ResumeButton", "hidePauseUI")
 	
-	createButton("BackButton", "Main menu", "PayumLook/Button", "LemonMilk-41", vec2:new(450, 500), vec2:new(400, 100))
-	setButtonFunction("BackButton","switchToMainMenu")
+	createButton("MainMenuButton", "Main menu", "PayumLook/Button", "LemonMilk-41", vec2:new(0.35, 0.65), vec2:new(0.3, 0.13))
+	setButtonFunction("MainMenuButton","switchToMainMenu")
 
 	setWindowVisible("ResumeButton", false)
-	setWindowVisible("BackButton", false)
+	setWindowVisible("MainMenuButton", false)
 end
 
 function showPauseUI()
 	setWindowVisible("PauseMenu", true)
 
 	setWindowVisible("ResumeButton", true)
-	setWindowVisible("SettingsButton", true)
-	setWindowVisible("BackButton", true)
+	setWindowVisible("MainMenuButton", true)
 
 	setUIMouseCursorVisible(true)
 end
@@ -97,8 +97,7 @@ function hidePauseUI()
 	setWindowVisible("PauseMenu", false)
 
 	setWindowVisible("ResumeButton", false)
-	setWindowVisible("SettingsButton", false)
-	setWindowVisible("BackButton", false)
+	setWindowVisible("MainMenuButton", false)
 
 	setUIMouseCursorVisible(false);
 end
@@ -106,14 +105,18 @@ end
 --Settings menu UI
 
 function createSettingsMenuUIButtons()
-	createButton("LeftArrowButton", "", "PayumLook/ButtonLeftArrow", "LemonMilk-41", vec2:new(220, 250), vec2:new(80, 80))
+	createButton("LeftArrowButton", "", "PayumLook/ButtonLeftArrow", "LemonMilk-41", vec2:new(0.17, 0.35), vec2:new(0.06, 0.1))
 	setButtonFunction("LeftArrowButton", "volumeDown")
 	
-	createButton("RightArrowButton", "", "PayumLook/ButtonRightArrow", "LemonMilk-41", vec2:new(980, 250), vec2:new(80, 80))
+	createButton("RightArrowButton", "", "PayumLook/ButtonRightArrow", "LemonMilk-41", vec2:new(0.768, 0.35), vec2:new(0.06, 0.1))
 	setButtonFunction("RightArrowButton","volumeUp")
+
+	createButton("BackButton", "Back", "PayumLook/Button", "LemonMilk-41", vec2:new(0.35, 0.65), vec2:new(0.3, 0.13))
+	setButtonFunction("BackButton","switchToMainMenu")
 
 	setWindowVisible("LeftArrowButton", false)
 	setWindowVisible("RightArrowButton", false)
+	setWindowVisible("BackButton", false)
 end
 
 function showSettingsMenuUI()
@@ -121,6 +124,7 @@ function showSettingsMenuUI()
 
 	setWindowVisible("LeftArrowButton", true)
 	setWindowVisible("RightArrowButton", true)
+	setWindowVisible("BackButton", true)
 
 	setUIMouseCursorVisible(true)
 end
@@ -130,6 +134,7 @@ function hideSettingsMenuUI()
 
 	setWindowVisible("LeftArrowButton", false)
 	setWindowVisible("RightArrowButton", false)
+	setWindowVisible("BackButton", false)
 end
 
 --HUD
@@ -164,8 +169,17 @@ end
 function switchToMainMenu()
 	hidePauseUI()
 	hideHUD()
+	hideSettingsMenuUI()
 
 	showMainMenuUI()
+
+	--Here we switch scenes to the main menu
+end
+
+function switchToSettingsMenu()
+	hideMainMenuUI()
+
+	showSettingsMenuUI()
 
 	--Here we switch scenes to the main menu
 end
