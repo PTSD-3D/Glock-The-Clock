@@ -9,5 +9,8 @@ require('Platform')
 require('Player')
 require('RedTarget')
 require('Goal')
+require('Spawn')
+require('Star')
+require('Target')
 
 require('sampleScene-config')
