@@ -5,7 +5,13 @@ local RespawnSystem = ns.class("RespawnSystem",ns.System)
 function RespawnSystem:initialize()
 	ns.System.initialize(self)
 	Manager.eventManager:addListener("deathEvent", self, self.onPlayerDead)
+	Manager.eventManager:addListener("ChangeSceneEvent", self, self.handleChangeScene)
 end
+
+function RespawnSystem:handleChangeScene(ev)
+	self.spawnPoint = nil;
+end
+
 
 function RespawnSystem:requires() return {"spawnpoint"} end
 

@@ -11,5 +11,6 @@ require('RedTarget')
 require('Spawn')
 require('Star')
 require('Target')
+require('Goal')
 
 require('sampleScene-config')
