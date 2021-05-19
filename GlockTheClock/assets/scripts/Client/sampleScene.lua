@@ -1,13 +1,10 @@
 local prefabs = require('Prefab')
 local sceneConfig = require('Prefab')
 local Scene={
- Entities={	
-	Goal=
-	{
-		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=10,y=10,z=10}},
-		Components= {
-		}
-    },
+ Entities={
+	Goal_000= prefabs.Goal({
+		Transform = {position={x=-0.0,y=2.5133743286132812,z=84.76555633544922},rotation={x=-0.0,y=0.0,z=0.0},scale={x=5,y=5,z=5}},
+		nextScene="Level1"}),
 	Spawn=
 	{
 		Transform = {position={x=-0.0,y=2.5133743286132812,z=-9.152349472045898},rotation={x=-0.0,y=0.0,z=0.0},scale={x=0.521728515625,y=0.521728515625,z=0.521728515625}},

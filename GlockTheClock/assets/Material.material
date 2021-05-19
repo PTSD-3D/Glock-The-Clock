@@ -36,6 +36,13 @@ material Red{
 	}
 }
 
+material Green{
+	technique {
+		pass {
+			diffuse 0 1 0
+			}
+	}
+}
 material Yellow{
 	technique {
 		pass {

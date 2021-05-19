@@ -11,6 +11,7 @@ ns.Component.create("topo")
 ns.Component.create("bullet",{"damage","speed","lifetime"},{damage=0,speed=3,lifetime=100})
 ns.Component.create("death",{"active"},{active=true})
 ns.Component.create("spawnpoint")
+ns.Component.create("goal", {"nextScene"})
 --lifetime is in frames
 ns.Component.create("targetMove",{"range", "rotation", "speed", "trig", "angle"})
 ns.Component.create("targetCollision", {"points"})
