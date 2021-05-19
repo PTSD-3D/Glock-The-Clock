@@ -44,6 +44,9 @@ local Resources = {
 		},
 		HUDLayout = {
 			path = "PayumHUD.layout", type=UIFileType.Layout
+		},
+		SettingsLayout = {
+			path = "Settings.layout", type=UIFileType.Layout
 		}
 	},
 	Meshes = {

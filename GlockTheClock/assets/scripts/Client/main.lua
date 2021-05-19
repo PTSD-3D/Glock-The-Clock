@@ -19,7 +19,8 @@ setUIMouseCursorVisible(false)
 createMainMenuUIButtons()
 createLevelSelectorUIButtons()
 createPauseMenuUIButtons()
+createSettingsMenuUIButtons()
 
---showMainMenuUI()
+showSettingsMenuUI()
 
 LOG("Test.lua completed")

@@ -103,6 +103,35 @@ function hidePauseUI()
 	setUIMouseCursorVisible(false);
 end
 
+--Settings menu UI
+
+function createSettingsMenuUIButtons()
+	createButton("LeftArrowButton", "", "PayumLook/ButtonLeftArrow", "LemonMilk-41", vec2:new(220, 250), vec2:new(80, 80))
+	--setButtonFunction("LeftArrowButton", "hidePauseUI")
+	
+	createButton("RightArrowButton", "", "PayumLook/ButtonRightArrow", "LemonMilk-41", vec2:new(980, 250), vec2:new(80, 80))
+	--setButtonFunction("RightArrowButton","switchToMainMenu")
+
+	setWindowVisible("LeftArrowButton", false)
+	setWindowVisible("RightArrowButton", false)
+end
+
+function showSettingsMenuUI()
+	setWindowVisible("SettingsMenu", true)
+
+	setWindowVisible("LeftArrowButton", true)
+	setWindowVisible("RightArrowButton", true)
+
+	setUIMouseCursorVisible(true)
+end
+
+function hideSettingsMenuUI()
+	setWindowVisible("SettingsMenu", false)
+
+	setWindowVisible("LeftArrowButton", false)
+	setWindowVisible("RightArrowButton", false)
+end
+
 --HUD
 
 function showHUD()

@@ -1,12 +1,16 @@
 <Imageset autoScaled="true" imagefile="PayumLook.png" name="PayumLook" nativeHorzRes="1920" nativeVertRes="1080" version="2">
-    <Image height="18" name="ButtonBackground" width="81" xPos="31" yPos="8" />
-    <Image height="34" name="MouseLook" width="34" xPos="171" yPos="53" />
-    <Image height="63" name="StopWatch" width="51" xPos="5" yPos="40" />
-    <Image height="60" name="Star" width="63" xPos="68" yPos="43" />
-    <Image height="67" name="1Medal" width="46" xPos="5" yPos="114" />
-    <Image height="67" name="2Medal" width="46" xPos="62" yPos="114" />
-    <Image height="67" name="3Medal" width="46" xPos="117" yPos="114" />
-    <Image height="68" name="Level1" width="70" xPos="5" yPos="184" />
-    <Image height="18" name="ButtonBackground2" width="81" xPos="124" yPos="8" />
+    <Image height="87" name="ButtonBackground" width="365" xPos="537" yPos="75" />
+    <Image height="34" name="MouseLook" width="34" xPos="199" yPos="72" />
+    <Image height="63" name="StopWatch" width="51" xPos="33" yPos="59" />
+    <Image height="81" name="Star" width="87" xPos="588" yPos="369" />
+    <Image height="67" name="1Medal" width="46" xPos="53" yPos="203" />
+    <Image height="67" name="2Medal" width="46" xPos="122" yPos="203" />
+    <Image height="67" name="3Medal" width="46" xPos="187" yPos="205" />
+    <Image height="211" name="Level1" width="449" xPos="33" yPos="490" />
+    <Image height="87" name="ButtonBackground2" width="365" xPos="537" yPos="173" />
     <Image height="1" name="MouseLookHidden" width="1" xPos="187" yPos="117" />
+    <Image height="135" name="ButtonLArrow" width="118" xPos="726" yPos="320" />
+    <Image height="135" name="ButtonRArrow" width="118" xPos="863" yPos="320" />
+    <Image height="135" name="ButtonLArrow2" width="119" xPos="1005" yPos="320" />
+    <Image height="135" name="ButtonRArrow2" width="119" xPos="1141" yPos="320" />
 </Imageset>
