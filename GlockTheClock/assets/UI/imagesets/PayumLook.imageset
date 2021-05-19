@@ -6,11 +6,13 @@
     <Image height="67" name="1Medal" width="46" xPos="53" yPos="203" />
     <Image height="67" name="2Medal" width="46" xPos="122" yPos="203" />
     <Image height="67" name="3Medal" width="46" xPos="187" yPos="205" />
-    <Image height="211" name="Level1" width="449" xPos="33" yPos="490" />
+    <Image height="230" name="Level1" width="409" xPos="436" yPos="483" />
     <Image height="87" name="ButtonBackground2" width="365" xPos="537" yPos="173" />
     <Image height="1" name="MouseLookHidden" width="1" xPos="187" yPos="117" />
     <Image height="135" name="ButtonLArrow" width="118" xPos="726" yPos="320" />
     <Image height="135" name="ButtonRArrow" width="118" xPos="863" yPos="320" />
     <Image height="135" name="ButtonLArrow2" width="119" xPos="1005" yPos="320" />
     <Image height="135" name="ButtonRArrow2" width="119" xPos="1141" yPos="320" />
+    <Image height="230" name="Level2" width="409" xPos="860" yPos="483" />
+    <Image height="202" name="Level3" width="387" xPos="22" yPos="499" />
 </Imageset>

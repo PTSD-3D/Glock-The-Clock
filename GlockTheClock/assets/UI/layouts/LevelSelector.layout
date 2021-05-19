@@ -4,22 +4,6 @@
     <Window type="DefaultWindow" name="LevelSelector" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
-        <Window type="TaharezLook/StaticImage" name="2Medal" >
-            <Property name="Area" value="{{0.735,0},{0.67,0},{0.835,0},{0.87,0}}" />
-            <Property name="Image" value="PayumLook/2Medal" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="AlwaysOnTop" value="true" />
-            <Property name="FrameEnabled" value="false" />
-            <Property name="BackgroundEnabled" value="false" />
-        </Window>
-        <Window type="TaharezLook/StaticImage" name="3Medal" >
-            <Property name="Area" value="{{0.735,0},{0.67,0},{0.835,0},{0.87,0}}" />
-            <Property name="Image" value="PayumLook/3Medal" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="AlwaysOnTop" value="true" />
-            <Property name="FrameEnabled" value="false" />
-            <Property name="BackgroundEnabled" value="false" />
-        </Window>
         <Window type="TaharezLook/StaticImage" name="Star" >
             <Property name="Area" value="{{0.86,0},{0.67,0},{0.98,0},{0.87,0}}" />
             <Property name="Image" value="PayumLook/Star" />
@@ -41,8 +25,10 @@
             <Property name="Image" value="PayumLook/Level1" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AlwaysOnTop" value="true" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
         </Window>
-        <Window type="TaharezLook/StaticImage" name="1Medal" >
+        <Window type="TaharezLook/StaticImage" name="Medal" >
             <Property name="Area" value="{{0.735,0},{0.67,0},{0.835,0},{0.87,0}}" />
             <Property name="Image" value="PayumLook/1Medal" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
