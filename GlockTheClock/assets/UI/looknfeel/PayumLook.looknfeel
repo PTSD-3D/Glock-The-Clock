@@ -1,97 +1,8 @@
 <?xml version="1.0" ?>
 <Falagard version="7">
-    <!--
-    ***************************************************
-        PayumLook/StaticImage
-    ***************************************************
-    -->
-    <WidgetLook name="PayumLook/StaticImage">
-        <PropertyDefinition name="ImageColours" initialValue="tl:FFFFFFFF tr:FFFFFFFF bl:FFFFFFFF br:FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
-        <PropertyDefinition name="FrameColours" initialValue="tl:FFFFFFFF tr:FFFFFFFF bl:FFFFFFFF br:FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
-        <PropertyDefinition name="BackgroundColours" initialValue="tl:FFFFFFFF tr:FFFFFFFF bl:FFFFFFFF br:FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
-        <PropertyDefinition name="VertFormatting" initialValue="Stretched" redrawOnWrite="true" type="VerticalFormatting"/>
-        <PropertyDefinition name="HorzFormatting" initialValue="Stretched" redrawOnWrite="true" type="HorizontalFormatting"/>
-        <Property name="BackgroundEnabled" value="true" />
-        <Property name="FrameEnabled" value="true" />
-        <Property name="Size" value="{{0, 128}, {0, 128}}" />
-        <ImagerySection name="image_withframe">
-            <ImageryComponent>
-                <Area>
-					<Dim type="LeftEdge" ><ImageDim name="TaharezLook/StaticLeft" dimension="Width" /></Dim>
-					<Dim type="TopEdge" ><ImageDim name="TaharezLook/StaticTop" dimension="Height" /></Dim>
-					<Dim type="RightEdge" >
-                        <OperatorDim op="Subtract">
-    						<UnifiedDim scale="1" type="RightEdge" />
-	        				<ImageDim name="TaharezLook/StaticRight" dimension="Width" />
-						</OperatorDim>
-					</Dim>
-					<Dim type="BottomEdge" >
-                        <OperatorDim op="Subtract">
-    						<UnifiedDim scale="1" type="BottomEdge" />
-	    					<ImageDim name="TaharezLook/StaticBottom" dimension="Height" />
-						</OperatorDim>
-					</Dim>
-				</Area>
-                <ImageProperty name="Image" />
-                <ColourRectProperty name="ImageColours" />
-                <VertFormatProperty name="VertFormatting" />
-                <HorzFormatProperty name="HorzFormatting" />
-            </ImageryComponent>
-        </ImagerySection>
-        <ImagerySection name="image_noframe">
-            <ImageryComponent>
-                <ImageProperty name="Image" />
-                <ColourRectProperty name="ImageColours" />
-                <VertFormatProperty name="VertFormatting" />
-                <HorzFormatProperty name="HorzFormatting" />
-            </ImageryComponent>
-        </ImagerySection>
-        <StateImagery name="Enabled" />
-        <StateImagery name="Disabled" />
-        <StateImagery name="EnabledFrame">
-            <Layer>
-                <Section look="TaharezLook/StaticShared" section="frame" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="DisabledFrame">
-            <Layer>
-                <Section look="TaharezLook/StaticShared" section="frame" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="WithFrameEnabledBackground">
-            <Layer>
-                <Section look="TaharezLook/StaticShared" section="background" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="WithFrameDisabledBackground">
-            <Layer>
-                <Section look="TaharezLook/StaticShared" section="background" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="NoFrameEnabledBackground">
-            <Layer>
-                <Section look="TaharezLook/StaticShared" section="background_noframe" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="NoFrameDisabledBackground">
-            <Layer>
-                <Section look="TaharezLook/StaticShared" section="background_noframe" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="WithFrameImage">
-            <Layer>
-                <Section section="image_withframe" />
-            </Layer>
-        </StateImagery>
-        <StateImagery name="NoFrameImage">
-            <Layer>
-                <Section section="image_noframe" />
-            </Layer>
-        </StateImagery>
-    </WidgetLook>
 	<!--
     ***************************************************
-        TaharezLook/Button
+        PayumLook/Button
     ***************************************************
     -->
     <WidgetLook name="PayumLook/Button">
@@ -146,9 +57,225 @@
         </ImagerySection>
         <ImagerySection name="disabled">
             <FrameComponent>
-                <Image component="LeftEdge" name="TaharezLook/ButtonLeftNormal" />
-                <Image component="RightEdge" name="TaharezLook/ButtonRightNormal" />
-                <Image component="Background" name="TaharezLook/ButtonMiddleNormal" />
+                <Image component="Background" name="PayumLook/ButtonBackground" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="DisabledImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <StateImagery name="Normal">
+            <Layer>
+                <Section section="normal" />
+                <Section section="label">
+                    <ColourProperty name="NormalTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Hover">
+            <Layer>
+                <Section section="hover" />
+                <Section section="label">
+                    <ColourProperty name="HoverTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Pushed">
+            <Layer>
+                <Section section="pushed" />
+                <Section section="label">
+                    <ColourProperty name="PushedTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="PushedOff">
+            <Layer>
+                <Section section="hover" />
+                <Section section="label">
+                    <ColourProperty name="HoverTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Disabled">
+            <Layer>
+                <Section section="disabled">
+                    <Colours topLeft="FF7F7F7F" topRight="FF7F7F7F" bottomLeft="FF7F7F7F" bottomRight="FF7F7F7F" />
+                </Section>
+                <Section section="label">
+                    <ColourProperty name="DisabledTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+    </WidgetLook>
+	
+	<!--
+    ***************************************************
+        PayumLook/ButtonLeftArrow
+    ***************************************************
+    -->
+    <WidgetLook name="PayumLook/ButtonLeftArrow">
+        <PropertyDefinition name="NormalTextColour" initialValue="FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="HoverTextColour" initialValue="FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="PushedTextColour" initialValue="FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="DisabledTextColour" initialValue="FF7F7F7F" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="VertLabelFormatting" initialValue="CentreAligned" type="VerticalTextFormatting"/>
+        <PropertyDefinition name="HorzLabelFormatting" initialValue="CentreAligned" type="HorizontalTextFormatting"/>
+        <PropertyDefinition name="NormalImage" initialValue="" redrawOnWrite="true"  type="Image"/>
+        <PropertyDefinition name="HoverImage" initialValue="" redrawOnWrite="true" type="Image"/>
+        <PropertyDefinition name="PushedImage" initialValue="" redrawOnWrite="true" type="Image"/>
+        <PropertyDefinition name="DisabledImage" initialValue="" redrawOnWrite="true" type="Image"/>
+        <PropertyDefinition name="VertImageFormatting" initialValue="Stretched" redrawOnWrite="true" type="VerticalFormatting" />
+        <PropertyDefinition name="HorzImageFormatting" initialValue="Stretched" redrawOnWrite="true" type="HorizontalFormatting" />  
+        <Property name="Size" value="{{0, 96}, {0, 32}}" />
+        <ImagerySection name="label">
+            <TextComponent>
+                <VertFormatProperty name="VertLabelFormatting" />
+                <HorzFormatProperty name="HorzLabelFormatting" />
+            </TextComponent>
+        </ImagerySection>
+        <ImagerySection name="normal">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonLArrow" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="NormalImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="hover">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonLArrow2" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="HoverImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="pushed">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonLArrow2" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="PushedImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="disabled">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonLArrow" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="DisabledImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <StateImagery name="Normal">
+            <Layer>
+                <Section section="normal" />
+                <Section section="label">
+                    <ColourProperty name="NormalTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Hover">
+            <Layer>
+                <Section section="hover" />
+                <Section section="label">
+                    <ColourProperty name="HoverTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Pushed">
+            <Layer>
+                <Section section="pushed" />
+                <Section section="label">
+                    <ColourProperty name="PushedTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="PushedOff">
+            <Layer>
+                <Section section="hover" />
+                <Section section="label">
+                    <ColourProperty name="HoverTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Disabled">
+            <Layer>
+                <Section section="disabled">
+                    <Colours topLeft="FF7F7F7F" topRight="FF7F7F7F" bottomLeft="FF7F7F7F" bottomRight="FF7F7F7F" />
+                </Section>
+                <Section section="label">
+                    <ColourProperty name="DisabledTextColour" />
+                </Section>
+            </Layer>
+        </StateImagery>
+    </WidgetLook>
+	
+	<!--
+    ***************************************************
+        PayumLook/ButtonRightArrow
+    ***************************************************
+    -->
+    <WidgetLook name="PayumLook/ButtonRightArrow">
+        <PropertyDefinition name="NormalTextColour" initialValue="FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="HoverTextColour" initialValue="FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="PushedTextColour" initialValue="FFFFFFFF" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="DisabledTextColour" initialValue="FF7F7F7F" redrawOnWrite="true" type="ColourRect"/>
+        <PropertyDefinition name="VertLabelFormatting" initialValue="CentreAligned" type="VerticalTextFormatting"/>
+        <PropertyDefinition name="HorzLabelFormatting" initialValue="CentreAligned" type="HorizontalTextFormatting"/>
+        <PropertyDefinition name="NormalImage" initialValue="" redrawOnWrite="true"  type="Image"/>
+        <PropertyDefinition name="HoverImage" initialValue="" redrawOnWrite="true" type="Image"/>
+        <PropertyDefinition name="PushedImage" initialValue="" redrawOnWrite="true" type="Image"/>
+        <PropertyDefinition name="DisabledImage" initialValue="" redrawOnWrite="true" type="Image"/>
+        <PropertyDefinition name="VertImageFormatting" initialValue="Stretched" redrawOnWrite="true" type="VerticalFormatting" />
+        <PropertyDefinition name="HorzImageFormatting" initialValue="Stretched" redrawOnWrite="true" type="HorizontalFormatting" />  
+        <Property name="Size" value="{{0, 96}, {0, 32}}" />
+        <ImagerySection name="label">
+            <TextComponent>
+                <VertFormatProperty name="VertLabelFormatting" />
+                <HorzFormatProperty name="HorzLabelFormatting" />
+            </TextComponent>
+        </ImagerySection>
+        <ImagerySection name="normal">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonRArrow" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="NormalImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="hover">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonRArrow2" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="HoverImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="pushed">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonRArrow2" />
+            </FrameComponent>
+            <ImageryComponent>
+                <ImageProperty name="PushedImage" />
+                <VertFormatProperty name="VertImageFormatting" />
+                <HorzFormatProperty name="HorzImageFormatting" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="disabled">
+            <FrameComponent>
+                <Image component="Background" name="PayumLook/ButtonRArrow" />
             </FrameComponent>
             <ImageryComponent>
                 <ImageProperty name="DisabledImage" />

@@ -6,5 +6,7 @@
 	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />
 	<FalagardMapping windowType="PayumLook/StaticImage" targetType="DefaultWindow" renderer="Core/StaticImage" lookNFeel="PayumLook/StaticImage" />
 	<FalagardMapping windowType="PayumLook/Button"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/Button" />
+	<FalagardMapping windowType="PayumLook/ButtonLeftArrow"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/ButtonLeftArrow" />
+	<FalagardMapping windowType="PayumLook/ButtonRightArrow"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/ButtonRightArrow" />
 </GUIScheme>
 
