@@ -107,10 +107,10 @@ end
 
 function createSettingsMenuUIButtons()
 	createButton("LeftArrowButton", "", "PayumLook/ButtonLeftArrow", "LemonMilk-41", vec2:new(220, 250), vec2:new(80, 80))
-	--setButtonFunction("LeftArrowButton", "hidePauseUI")
+	setButtonFunction("LeftArrowButton", "volumeDown")
 	
 	createButton("RightArrowButton", "", "PayumLook/ButtonRightArrow", "LemonMilk-41", vec2:new(980, 250), vec2:new(80, 80))
-	--setButtonFunction("RightArrowButton","switchToMainMenu")
+	setButtonFunction("RightArrowButton","volumeUp")
 
 	setWindowVisible("LeftArrowButton", false)
 	setWindowVisible("RightArrowButton", false)
@@ -168,4 +168,12 @@ function switchToMainMenu()
 	showMainMenuUI()
 
 	--Here we switch scenes to the main menu
+end
+
+function volumeUp()
+	setProgressBarValue("VolumePB",0.5)
+end
+
+function volumeDown()
+	setProgressBarValue("VolumePB", 0.2);
 end
