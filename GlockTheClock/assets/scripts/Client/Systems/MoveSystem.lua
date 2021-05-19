@@ -51,12 +51,6 @@ function MoveSystem:update(dt)
 		if keyPressed(PTSDKeys.D) then
 			dir = dir + tr:getRight()
 		end
-		if keyJustPressed(PTSDKeys.R) then
-			Manager:changeScene("Level1")
-		end
-		if keyPressed(PTSDKeys.Q) then
-			tr:setChildCamera()
-		end
 
 		--making the velocity vector's magnitude equal to vel
 		local vtotal = dir:normalize() * vel
