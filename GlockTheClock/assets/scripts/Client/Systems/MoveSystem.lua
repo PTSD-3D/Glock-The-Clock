@@ -5,9 +5,16 @@ local MoveSystem = ns.class("MoveSystem",ns.System)
 function MoveSystem:requires()
 	return {"playerMove"}
 end
+-- MoveSystem.camChild = false;
 
-MoveSystem.camChild = false;
-
+function MoveSystem:initialize()
+	ns.System.initialize(self)
+	self.camChild = false;
+	Manager.eventManager:addListener("ChangeSceneEvent", self, self.handleChangeScene)
+end
+function MoveSystem:handleChangeScene(ev)
+	self.camChild = false;
+end
 function MoveSystem:update(dt)
 	for _, entity in pairs(self.targets) do
 		local tr = entity.Transform
@@ -43,6 +50,12 @@ function MoveSystem:update(dt)
 		end
 		if keyPressed(PTSDKeys.D) then
 			dir = dir + tr:getRight()
+		end
+		if keyJustPressed(PTSDKeys.R) then
+			Manager:changeScene("Level1")
+		end
+		if keyPressed(PTSDKeys.Q) then
+			tr:setChildCamera()
 		end
 
 		--making the velocity vector's magnitude equal to vel

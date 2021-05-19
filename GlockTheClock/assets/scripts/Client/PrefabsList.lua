@@ -8,5 +8,8 @@ require('Kerbo')
 require('Platform')
 require('Player')
 require('RedTarget')
+require('Spawn')
+require('Star')
+require('Target')
 
 require('sampleScene-config')
