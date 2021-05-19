@@ -1,5 +1,7 @@
 local ns = require('namespace')
 
+local resources = require('resources')
+
 local MoveSystem = ns.class("MoveSystem",ns.System)
 
 function MoveSystem:requires()
@@ -64,6 +66,9 @@ function MoveSystem:update(dt)
 			local force = vec3:new(0, entity:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
 			rb:addForce(force, ref)
+			
+			local chan = playSound(resources.Sounds.Jump.id)
+			setChannelVolume(chan,1)
 
 			--this is only necessary because the player is on the void
 			vtotal.y = 0
