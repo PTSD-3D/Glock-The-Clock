@@ -13,16 +13,16 @@ end
 --if ents ~= {} then ents[1]:add(ns.Component.all["topo"]()) end
 
 -- UI Usage example
-setUIMouseCursor("TaharezLook/MouseArrow")
+-- setUIMouseCursor("TaharezLook/MouseArrow")
 
-setWindowVisible("TitleWindow", true)
+-- setWindowVisible("TitleWindow", true)
 
-createButton("PushButton", "CEGUI es facilito", "TaharezLook/Button",vec2:new(300, 200), vec2:new(200, 50))
-setButtonFunction("PushButton","showTaiFighterUI")
+-- createButton("PushButton", "CEGUI es facilito", "TaharezLook/Button",vec2:new(300, 200), vec2:new(200, 50))
+-- setButtonFunction("PushButton","showTaiFighterUI")
 
-createButton("ExitButton", "Exit", "TaharezLook/Button",vec2:new(300, 300), vec2:new(200, 50))
-setButtonFunction("ExitButton","exitCallback")
+-- createButton("ExitButton", "Exit", "TaharezLook/Button",vec2:new(300, 300), vec2:new(200, 50))
+-- setButtonFunction("ExitButton","exitCallback")
 
-showTaiFighterUI()
+-- showTaiFighterUI()
 
 LOG("Test.lua completed")
