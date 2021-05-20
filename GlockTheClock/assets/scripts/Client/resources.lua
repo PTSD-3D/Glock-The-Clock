@@ -54,17 +54,26 @@ local Resources = {
 	UISchemes = {
 		TaharezLookScheme = {
 			path = "TaharezLook.scheme", type=UIFileType.Scheme
+		},
+		PayumLookScheme = {
+			path = "PayumLook.scheme", type=UIFileType.Scheme
 		}
 	},
 	UILayouts = {	
-		TaiFighterLayout = {
-			path = "TaiFighter.layout", type=UIFileType.Layout
+		MainMenuLayout = {
+			path = "MainMenu.layout", type=UIFileType.Layout
+		},
+		LevelSelectorLayout = {
+			path = "LevelSelector.layout", type=UIFileType.Layout
 		},
 		PauseLayout = {
 			path = "Pause.layout", type=UIFileType.Layout
 		},
-		TitleLayout = {
-			path = "Title.layout", type=UIFileType.Layout
+		HUDLayout = {
+			path = "PayumHUD.layout", type=UIFileType.Layout
+		},
+		SettingsLayout = {
+			path = "Settings.layout", type=UIFileType.Layout
 		}
 	},
 	Meshes = {
