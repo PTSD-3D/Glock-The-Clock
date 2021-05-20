@@ -10,10 +10,8 @@ end
 
 function MoveSystem:Shoot(entity,dt)
 
-	local dest = getOrientation()
+	local dest = getCamOrientation()
 	
-	-- local dir = dest - entity.Transform.position
-
 	ns.spawnEntity(Manager,prefabs.Bullet({
 		Transform = {
 			position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},

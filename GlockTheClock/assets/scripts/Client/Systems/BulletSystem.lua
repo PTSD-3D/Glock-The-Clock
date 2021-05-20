@@ -24,8 +24,10 @@ end
 function BulletSystem:update(dt)
 	for _, entity in pairs(self.targets) do
 		local bulletInfo = entity:get("bullet")
-		local movement = vec3:new(bulletInfo.speed*dt,0,0)
-		entity.Transform:translate(movement)
+		-- local movement = vec3:new(bulletInfo.speed*dt,0,0)
+		-- entity.Transform:translate(movement)
+		local dir = bulletInfo.direction:normalize()
+		entity.Transform:translate(dir)
 		bulletInfo.lifetime = bulletInfo.lifetime - 1
 		if(bulletInfo.lifetime <= 0) then
 			Manager:removeEntity(entity)
