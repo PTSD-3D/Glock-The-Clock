@@ -153,7 +153,7 @@ function hideHUD()
 end
 
 function exitCallback()
-	LOG("EXIT place holder")
+	ExitGame()
 end
 
 --Button callbacks
