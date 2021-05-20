@@ -9,17 +9,16 @@ function BulletSystem:initialize()
 		self.factor = 1
 end
 
--- function BulletSystem:onCollision(ent, other, col)
--- 	ent.Mesh:setMaterial("Red")
--- 	other.Mesh:setMaterial("Red")
--- 	ent.Transform:translate(vec3:new(self.factor*math.random(1),self.factor*math.random(1),self.factor*math.random(1)))
--- 	other.Transform:translate(vec3:new(self.factor*-1*math.random(1),self.factor*-1*math.random(1),self.factor*-1*math.random(1)))
--- 	print("Collision Points:")
--- 	for i,v in ipairs(col) do
--- 		v:print("\t"..i..": ")
--- 	end	
--- 	self.factor = self.factor+1
--- end
+function BulletSystem:onCollision(ent, other, col)
+	if(other:has("floor")) then
+		LOG("LA BALA ISO FLOP")
+		Manager:removeEntity(ent)
+	elseif(other:has("targetCollision")) then
+		LOG("LA BALA ISO PUM A LA COSA")
+		Manager:removeEntity(ent)
+		Manager:removeEntity(other)
+	end
+end
 
 function BulletSystem:update(dt)
 	for _, entity in pairs(self.targets) do

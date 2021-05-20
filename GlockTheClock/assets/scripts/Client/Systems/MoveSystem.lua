@@ -1,5 +1,5 @@
 local ns = require('namespace')
-
+local prefabs = require('Prefab')
 local resources = require('resources')
 
 local MoveSystem = ns.class("MoveSystem",ns.System)
@@ -15,7 +15,7 @@ function MoveSystem:Shoot(entity,dt)
 	
 	ns.spawnEntity(Manager,prefabs.Bullet({
 			Transform = {
-				position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},
+				position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z-25},
 				rotation={x=0.0,y=0.0,z=0.0},
 				scale={x=1,y= 1,z=1}
 			},

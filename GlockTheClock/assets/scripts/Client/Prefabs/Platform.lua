@@ -6,6 +6,7 @@ function pf.Platform (params)
 	return{
 		Components = {
 			--Example user defined components
+			{name = "floor", arguments ={}}
 		},
 		Transform = params.Transform,
 		Mesh = {mesh="Cube.mesh", material="Red"},
