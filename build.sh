@@ -29,12 +29,50 @@ printmsg() {
 	printf "[3] : Cancel\n"
 }
 
+checkupdate() {
+	if [[ -x GlockTheClock/PTSD_Core && -x bin/PTSD_Core ]] 
+	then
+		our_hash=$(sha256sum GlockTheClock/PTSD_Core | awk '{print $1}')
+		new_hash=$(sha256sum bin/PTSD_Core |  awk '{print $1}')
+		if [[ $our_hash == $new_hash ]]
+		then
+			touch hash1.txt
+			touch hash2.txt
+			
+			find ./GlockTheClock/assets/scripts/Engine/ -type f -exec md5sum {} + | sort -k 2 | awk '{print $1}' > hash1.txt
+			find ./bin/assets/scripts/Engine/ -type f -exec md5sum {} + | sort -k 2 | awk '{print $1}' > hash2.txt
+
+			our_hash=$(sha256sum hash1.txt| awk '{print $1}')
+			new_hash=$(sha256sum hash2.txt |  awk '{print $1}')
+
+			if [[ $our_hash == $new_hash ]]
+			then
+				echo "We dont need to update files, we have the most up to date scripts and build"
+				result=0
+				return 0
+			fi
+			rm hash1.txt hash2.txt
+		fi
+	fi
+	echo "We need to update files, the build from engine is updated"
+	result=1
+	return 1;
+}
+
 #Moves assets to corresponding folders in bin
 move_assets() {
-	rm -rf ./bin/assets/scripts/Client # We don't want Client example scripts from Engine
-	cp -rT "./bin" "./GlockTheClock"
-	cp "-rT" "./bin/assets/scripts/Engine" "./GlockTheClock/assets/scripts/Engine"
-	rm -r ./bin
+	checkupdate
+	if [ $result == 1 ]
+	then
+		mkdir tmp
+		cp -rf GlockTheClock/assets/* tmp
+		rm -r ./tmp/scripts
+		rsync -avu --update --progress bin/ GlockTheClock/ --exclude assets/scripts/Client &> /dev/null
+		cp -r tmp/* GlockTheClock/assets
+		rm -r ./bin
+		rm -r ./tmp
+	fi
+	return $result
 }
 
 #Gets the path to the engine by param, builds it and moves assets and scritps to its corresponding places
@@ -44,11 +82,15 @@ build() {
 	#build engine
 	echo $path_to_engine
 	cd $path_to_engine
-	./build.bash "-b"
+	./build.bash &>/dev/null && echo "Engine build succesfully" 
 	cd $current
 	#Move assets and scripts
 	cp -r $path_to_engine"/bin" ./
 	move_assets
+	if [[ $result == 1 ]]
+	then
+		echo "Assets moved succesfully"
+	fi
 }
 
 #Make sure there is a .bin directory
@@ -81,11 +123,12 @@ else
 fi
 
 #We have now path_to_engine set to the engine repo in some way or form, we build it
-build $path_to_engine
+build $path_to_engine && echo "Build succesfull!!"
 
 #If execute flag is set, execute the game after build
 if [[ ! -z $xflag ]]; then
 	cd GlockTheClock
+	echo "Openning GlockTheClock"
 	./PTSD_Core
 fi
 exit 0

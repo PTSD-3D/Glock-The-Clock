@@ -1,3 +1,4 @@
 --New events are to be required here for loading
 
---require('sampleEvent')
+require('DeathEvent')
+require('GoalEvent')

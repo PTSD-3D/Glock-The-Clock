@@ -2,6 +2,15 @@
 
 require('Bullet')
 require('Enemy')
-require('sampleScene-config')
+require('BlueTarget')
+require('DeadZone')
+require('Kerbo')
 require('Platform')
 require('Player')
+require('RedTarget')
+require('Spawn')
+require('Star')
+require('Target')
+require('Goal')
+
+require('sampleScene-config')

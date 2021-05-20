@@ -1,8 +1,7 @@
 local ns = require('namespace')
 
 
-
-local status, ret = pcall(ns.loadScene, Manager, require('sampleScene'))
+local status, ret = pcall(ns.loadScene, Manager, require('MainMenuScene'))
 if status then
 	LOG("Scene loaded correctly")
 else
@@ -14,18 +13,14 @@ end
 --if ents ~= {} then ents[1]:add(ns.Component.all["topo"]()) end
 
 -- UI Usage example
--- setUIMouseCursor("TaharezLook/MouseArrow")
+setUIMouseCursor("PayumLook/MouseLook")
+setUIMouseCursorVisible(false)
 
--- setWindowVisible("TitleWindow", true)
+createMainMenuUIButtons()
+createLevelSelectorUIButtons()
+createPauseMenuUIButtons()
+createSettingsMenuUIButtons()
 
--- createButton("PushButton", "CEGUI es facilito", "TaharezLook/Button", "DejaVuSans-24",vec2:new(300, 200), vec2:new(200, 50))
--- setButtonFunction("PushButton","showTaiFighterUI")
+showMainMenuUI()
 
--- createButton("ExitButton", "Exit", "TaharezLook/Button", "DejaVuSans-12",vec2:new(300, 300), vec2:new(200, 50))
--- setButtonFunction("ExitButton","exitCallback")
-
--- showTaiFighterUI()
-
--- setProgressBarValue("DimensionBar", 0.2);
-
-LOG("main.lua completed")
+LOG("Test.lua completed")

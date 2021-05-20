@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<GUIScheme version="5" name="PayumLook">
+	<Imageset filename="PayumLook.imageset" />
+	<Imageset filename="PayumLookBackground.imageset" />
+	<LookNFeel filename="PayumLook.looknfeel" />
+	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />
+	<FalagardMapping windowType="PayumLook/StaticImage" targetType="DefaultWindow" renderer="Core/StaticImage" lookNFeel="PayumLook/StaticImage" />
+	<FalagardMapping windowType="PayumLook/Button"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/Button" />
+	<FalagardMapping windowType="PayumLook/ButtonLeftArrow"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/ButtonLeftArrow" />
+	<FalagardMapping windowType="PayumLook/ButtonRightArrow"      targetType="CEGUI/PushButton"  renderer="Core/Button"       lookNFeel="PayumLook/ButtonRightArrow" />
+</GUIScheme>
+
