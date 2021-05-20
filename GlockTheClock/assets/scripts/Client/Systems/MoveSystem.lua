@@ -13,11 +13,12 @@ function MoveSystem:Shoot(entity,dt)
 	local dest = getCamOrientation()
 	
 	ns.spawnEntity(Manager,prefabs.Bullet({
-		Transform = {
-			position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},
-			rotation={x=0.0,y=0.0,z=0.0},
-			scale={x=1,y= 1,z=1}},
-		direction = dest
+			Transform = {
+				position={x=entity.Transform.position.x,y=entity.Transform.position.y,z=entity.Transform.position.z},
+				rotation={x=0.0,y=0.0,z=0.0},
+				scale={x=1,y= 1,z=1}
+			},
+			direction = dest
 		}
 	))
 end
