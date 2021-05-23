@@ -10,9 +10,9 @@ function pf.Bullet(params)
 		Transform = { 
 			position= params.Transform.position,
 			rotation=params.Transform.rotation,
-			scale={x=0.2,y=0.2,z=0.2}
+			scale={x=0.4,y=0.4,z=0.4}
 		},
-		Mesh = { mesh = "Kirby.mesh", material = "body" },
+		Mesh = { mesh = "Bala.mesh", material = "BalaPayum" },
 		Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=0,trigger=true,rotation=params.Transform.rotation}
 	}
 end
