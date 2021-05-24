@@ -7,7 +7,7 @@ local TargetCollisionSystem = ns.class("TargetCollisionSystem", ns.System)
 function TargetCollisionSystem:requires() return {"targetCollision"} end
 
 function TargetCollisionSystem:onCollision(target, other, collision)
-	if(other:has("playerMove")) then
+	if(other:has("bullet")) then
 		local targetCollision = target:get("targetCollision")
 		Manager:removeEntity(target)
 
