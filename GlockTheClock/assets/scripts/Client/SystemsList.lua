@@ -10,5 +10,6 @@ require('TargetCollisionSystem')
 require('SoundSystem')
 require('GoalSystem')
 require('BulletSystem') --Currently not used
+require('TimerSystem')
 
 LOG("Systems load completed", LogLevel.Info, 1)

@@ -5,7 +5,7 @@
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
         <Window type="TaharezLook/StaticText" name="Counter" >
-            <Property name="Area" value="{{0.385,0},{0.035,0},{0.385,242},{0.035,72}}" />
+            <Property name="Area" value="{{0.395,0},{0.035,0},{0.395,242},{0.035,72}}" />
             <Property name="Font" value="LemonMilk-50" />
             <Property name="Text" value="00:00" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
@@ -20,7 +20,7 @@
             <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
         <Window type="TaharezLook/StaticImage" name="Clock" >
-            <Property name="Area" value="{{0.7,0},{0.01,0},{0.77,0},{0.16,0}}" />
+            <Property name="Area" value="{{0.69,0},{0.01,0},{0.76,0},{0.16,0}}" />
             <Property name="Image" value="PayumLook/StopWatch" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="FrameEnabled" value="false" />
