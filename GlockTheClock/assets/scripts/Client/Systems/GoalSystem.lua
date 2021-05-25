@@ -6,7 +6,6 @@ function GoalSystem:requires() return {"goal"} end
 
 function GoalSystem:initialize()
 	ns.System.initialize(self)
-    LOG("Init goalsys",LogLevel.Critical,1)
 end
 
 function GoalSystem:onCollision(goal,other,_)

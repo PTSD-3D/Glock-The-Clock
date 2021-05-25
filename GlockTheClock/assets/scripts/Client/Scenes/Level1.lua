@@ -1,21 +1,19 @@
-local prefabs = require('Prefab')
-local sceneConfig = require('Prefab')
+local prefabs = require('Prefab') 
+local sceneConfig = require('Prefab') 
 local Scene={
  Entities={	DeadZone_000=prefabs.DeadZone({
 		Transform = {position={x=-34.03219223022461,y=-82.47428894042969,z=53.89710235595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=239.62814331054688,y=2.7058236598968506,z=239.62814331054688}}}),
-	Goal=
-        {
-		Transform = {position={x=-87.77423858642578,y=9.129749298095703,z=164.6969757080078},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
-            Components= {
-            }
-        }
-        ,
+	Goal=prefabs.Goal({
+		Transform = {position={x=-87.77423858642578,y=9.129749298095703,z=164.6969757080078},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=3.0}},
+		nextScene="sampleScene"
+	}),
 	Platform_000=prefabs.Platform({
-		Transform = {position={x=40.57072448730469,y=5.99833869934082,z=-19.997583389282227},rotation={x=-0.0,y=0.0,z=0.0},scale={x=12.153708457946777,y=7.076155662536621,z=61.460819244384766}}}),
+		Transform = {position={x=40.57072448730469,y=5.99833869934082,z=-19.997583389282227},rotation={x=-0.0,y=0.0,z=0.0},scale={x=12.153708457946777,y=7.076155662536621,z=61.460819244384766}}
+	}),
 	Platform_001=prefabs.Platform({
 		Transform = {position={x=3.1944422721862793,y=7.114109992980957,z=28.22423553466797},rotation={x=-0.0,y=0.0,z=0.0},scale={x=25.66901969909668,y=8.686304092407227,z=12.916791915893555}}}),
 	Platform_002=prefabs.Platform({
-		Transform = {position={x=-8.657063484191895,y=4.902084827423096,z=9.541060447692871},rotation={x=-0.0,y=0.0,z=24.997397824432174},scale={x=18.368900299072266,y=3.4506452083587646,z=5.537875175476074}}}),
+		Transform = {position={x=-8.657063484191895,y=4.902084827423096,z=8.892407417297363},rotation={x=-0.0,y=0.0,z=24.997397824432174},scale={x=18.368900299072266,y=3.4506452083587646,z=5.537875175476074}}}),
 	Platform_003=prefabs.Platform({
 		Transform = {position={x=-38.63584899902344,y=-9.390616416931152,z=26.216028213500977},rotation={x=-0.0,y=0.0,z=0.0},scale={x=16.17233657836914,y=10.277482986450195,z=21.946231842041016}}}),
 	Platform_004=prefabs.Platform({
@@ -32,51 +30,80 @@ local Scene={
 		Transform = {position={x=-87.15438842773438,y=4.70130729675293,z=74.60023498535156},rotation={x=-0.0,y=0.0,z=0.0},scale={x=13.536832809448242,y=17.694080352783203,z=6.626018047332764}}}),
 	Player_000=prefabs.Player({
 		Transform = {position={x=41.12141418457031,y=29.44719123840332,z=-69.62260437011719},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
+
+	RedTarget_000=prefabs.RedTarget({
+		Transform = {position={x=41.12141418457031,y=18.09440040588379,z=-44.53279113769531},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_001=prefabs.RedTarget({
+		Transform = {position={x=46.187461853027344,y=18.09440040588379,z=-5.158542633056641},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_002=prefabs.RedTarget({
+		Transform = {position={x=36.17743682861328,y=18.09440040588379,z=-5.510189056396484},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_003=prefabs.RedTarget({
+		Transform = {position={x=-24.918935775756836,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_004=prefabs.RedTarget({
+		Transform = {position={x=-34.626441955566406,y=29.45375633239746,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_005=prefabs.RedTarget({
+		Transform = {position={x=-43.466041564941406,y=23.465904235839844,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_006=prefabs.RedTarget({
+		Transform = {position={x=-88.04823303222656,y=30.256906509399414,z=83.13591003417969},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_007=prefabs.RedTarget({
+		Transform = {position={x=-88.04823303222656,y=36.74729919433594,z=97.96111297607422},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_008=prefabs.RedTarget({
+		Transform = {position={x=-88.04823303222656,y=10.276958465576172,z=140.86590576171875},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_009=prefabs.RedTarget({
+		Transform = {position={x=-88.04823303222656,y=29.6544246673584,z=112.58760070800781},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_010=prefabs.RedTarget({
+		Transform = {position={x=40.751678466796875,y=18.09440040588379,z=20.259967803955078},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_012=prefabs.RedTarget({
+		Transform = {position={x=40.751678466796875,y=27.001758575439453,z=20.259967803955078},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_013=prefabs.RedTarget({
+		Transform = {position={x=18.984834671020508,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_014=prefabs.RedTarget({
+		Transform = {position={x=-2.0875587463378906,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
+	RedTarget_015=prefabs.RedTarget({
+		Transform = {position={x=-88.04823303222656,y=28.414262771606445,z=39.51456832885742},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+	}),
 	Spawn=prefabs.Spawn({
-		Transform = {position={x=41.357574462890625,y=18.937252044677734,z=-69.49696350097656},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
+		Transform = {position={x=41.357574462890625,y=18.937252044677734,z=-69.49696350097656},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}},
+		Components= {
+			{ name = "spawnpoint", arguments = {true} }
+		}
+	}),
 	Star_000=prefabs.Star({
-		Transform = {position={x=-26.47929573059082,y=6.011415004730225,z=35.112457275390625},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.004072904586792,y=3.004072904586792,z=3.004072904586792}}}),
-	Target_000=prefabs.Target({
-		Transform = {position={x=41.12141418457031,y=18.09440040588379,z=-44.53279113769531},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_001=prefabs.Target({
-		Transform = {position={x=46.187461853027344,y=18.09440040588379,z=-5.158542633056641},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_002=prefabs.Target({
-		Transform = {position={x=36.17743682861328,y=18.09440040588379,z=-5.510189056396484},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_003=prefabs.Target({
-		Transform = {position={x=-24.918935775756836,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_004=prefabs.Target({
-		Transform = {position={x=-34.626441955566406,y=29.45375633239746,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_005=prefabs.Target({
-		Transform = {position={x=-43.466041564941406,y=23.465904235839844,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_006=prefabs.Target({
-		Transform = {position={x=-88.04823303222656,y=30.256906509399414,z=83.13591003417969},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_007=prefabs.Target({
-		Transform = {position={x=-88.04823303222656,y=36.74729919433594,z=97.96111297607422},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_008=prefabs.Target({
-		Transform = {position={x=-88.04823303222656,y=10.276958465576172,z=140.86590576171875},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_009=prefabs.Target({
-		Transform = {position={x=-88.04823303222656,y=29.6544246673584,z=112.58760070800781},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_010=prefabs.Target({
-		Transform = {position={x=40.751678466796875,y=18.09440040588379,z=20.259967803955078},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_011=prefabs.Target({
-		Transform = {position={x=40.751678466796875,y=27.001758575439453,z=20.259967803955078},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_012=prefabs.Target({
-		Transform = {position={x=40.751678466796875,y=27.001758575439453,z=20.259967803955078},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_013=prefabs.Target({
-		Transform = {position={x=18.984834671020508,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_014=prefabs.Target({
-		Transform = {position={x=-2.0875587463378906,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=0.0,z=0.0},scale={x=1.0,y=1.0,z=1.0}}}),
-	Target_015=prefabs.Target({
-		Transform = {position={x=-88.04823303222656,y=28.414262771606445,z=39.51456832885742},rotation={x=-0.0,y=90.00000250447816,z=0.0},scale={x=1.0,y=1.0,z=1.0}}})},
+		Transform = {position={x=-26.47929573059082,y=6.011415004730225,z=35.112457275390625},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.004072904586792,y=3.004072904586792,z=3.004072904586792}}})},
 		SceneConfig=
         {
         PhysicsConfig={
-            Gravity = -75
-        },
-				GraphicsConfig={
-					LockMouse = true
-				}
-
+            Gravity = -90
+        }
     }
 }
 return Scene

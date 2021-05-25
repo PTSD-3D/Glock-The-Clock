@@ -16,7 +16,7 @@ function BulletSystem:onCollision(ent, other, col)
 	elseif(other:has("targetCollision")) then
 		LOG("LA BALA ISO PUM A LA COSA")
 		Manager:removeEntity(ent)
-		Manager:removeEntity(other)
+		--Manager:removeEntity(other)
 	end
 end
 
