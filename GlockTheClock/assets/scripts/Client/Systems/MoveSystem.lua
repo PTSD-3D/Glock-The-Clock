@@ -29,7 +29,6 @@ end
 
 function MoveSystem:initialize()
 	ns.System.initialize(self)
-	self.camChild = false;
 	Manager.eventManager:addListener("ChangeSceneEvent", self, self.handleChangeScene)
 end
 function MoveSystem:handleChangeScene(ev)
@@ -60,7 +59,7 @@ function MoveSystem:update(dt)
 		if(mouseDirection == nil) then LOG("mdir nil",LogLevel.Critical,1) end
 		mouseDirection =  mouseDirection * vr
 		local rot = vec3:new(0, -mouseDirection.x, 0)
-		pitchCamera(mouseDirection.y*dt)
+		rotateCamera(vec2:new(0, mouseDirection.y))
 		rb:setAngularVelocity(rot)
 
 		--getting direction vector
