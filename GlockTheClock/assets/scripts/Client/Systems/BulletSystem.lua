@@ -23,7 +23,6 @@ end
 function BulletSystem:update(dt)
 	for _, entity in pairs(self.targets) do
 		local bullet = entity:get("bullet")
-		
 		local dir = bullet.direction:normalize()*bullet.speed
 		entity.Rigidbody:setLinearVelocity(dir)
 

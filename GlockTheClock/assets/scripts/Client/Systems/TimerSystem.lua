@@ -45,9 +45,9 @@ end
 function TimerSystem:update(dt)
 	if not stopped then
 		timeTicks = timeTicks + dt
-		if (timeTicks%30 == 0) and not (timeTicks == 0) then
+		if (timeTicks > 1) then
 			timeSeconds = timeSeconds + 1
-			timeTicks = 0
+			timeTicks = timeTicks - 1
 			self:updateUI()
 		end
 		if(timeSeconds%60 == 0) and not (timeSeconds == 0) then
