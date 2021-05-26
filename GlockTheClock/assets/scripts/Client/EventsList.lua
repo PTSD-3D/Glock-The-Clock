@@ -2,3 +2,5 @@
 
 require('DeathEvent')
 require('GoalEvent')
+require('SelectLevelEvent')
+require('InitLevelEvent')
