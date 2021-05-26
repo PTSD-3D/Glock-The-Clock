@@ -6,6 +6,12 @@ function SoundSystem:requires()
 	return {"boombox"}
 end
 
+function SoundSystem:onAddEntity(entity)
+	local music = entity:get("boombox")
+	music.isPlaying = true
+	self:onPlay(music)
+end
+
 function SoundSystem:onPlay(music)
 	if music.channel == -1 then 
 		--we play for the first time
