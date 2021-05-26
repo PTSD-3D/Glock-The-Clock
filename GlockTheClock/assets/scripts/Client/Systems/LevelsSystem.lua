@@ -11,6 +11,8 @@ function LevelsSystem:initialize()
 	ns.System.initialize(self)
 	Manager.eventManager:addListener("selectLevelEvent", self, self.onSelectedLevel)
 	Manager.eventManager:addListener("initLevelEvent", self, self.onInitLevel)
+	Manager.eventManager:addListener("saveTimeLevelEvent", self, self.onSaveTimeLevel)
+	Manager.eventManager:addListener("ChangeSceneEvent", self, self.onChangeLevel)
 end
 
 function LevelsSystem:onSelectedLevel(event)
@@ -25,12 +27,29 @@ function LevelsSystem:onSelectedLevel(event)
 		changeStaticImage("Medal","PayumLook/2Medal")
 
 		changeText("LevelTime", level1Time)
+	else
+		changeStaticImage("LevelImg","PayumLook/Level1")
+		changeStaticImage("Medal","PayumLook/1Medal")
+
+		changeText("LevelTime", sampleSceneTime)
 	end
 
 end
 
 function LevelsSystem:onInitLevel()
 	Manager:changeScene(currentLevel)
+end
+
+function LevelsSystem:onChangeLevel(event)
+	currentLevel = event.newSceneName
+end
+
+function LevelsSystem:onSaveTimeLevel(event)
+	if(currentLevel == "sampleScene") then
+		sampleSceneTime = event.time
+	elseif (currentLevel == "Level1") then
+		level1Time = event.time
+	end
 end
 
 Manager:addSystem(LevelsSystem())
