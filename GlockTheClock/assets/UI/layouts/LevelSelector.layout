@@ -4,16 +4,8 @@
     <Window type="DefaultWindow" name="LevelSelector" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
-        <Window type="TaharezLook/StaticImage" name="Star" >
-            <Property name="Area" value="{{0.86,0},{0.67,0},{0.98,0},{0.87,0}}" />
-            <Property name="Image" value="PayumLook/Star" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="AlwaysOnTop" value="true" />
-            <Property name="FrameEnabled" value="false" />
-            <Property name="BackgroundEnabled" value="false" />
-        </Window>
         <Window type="TaharezLook/StaticImage" name="StopWatch" >
-            <Property name="Area" value="{{0.4,0},{0.67,0},{0.5,0},{0.87,0}}" />
+            <Property name="Area" value="{{0.45,0},{0.67,0},{0.55,0},{0.87,0}}" />
             <Property name="Image" value="PayumLook/StopWatch" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AlwaysOnTop" value="true" />
@@ -29,7 +21,7 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="TaharezLook/StaticImage" name="Medal" >
-            <Property name="Area" value="{{0.735,0},{0.67,0},{0.835,0},{0.87,0}}" />
+            <Property name="Area" value="{{0.85,0},{0.67,0},{0.95,0},{0.87,0}}" />
             <Property name="Image" value="PayumLook/1Medal" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AlwaysOnTop" value="true" />
@@ -40,9 +32,11 @@
             <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
             <Property name="Image" value="PayumLookBackground/Bg" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="TaharezLook/StaticText" name="LevelTime" >
-            <Property name="Area" value="{{0.519,0},{0.72,0},{0.519,251},{0.72,78}}" />
+            <Property name="Area" value="{{0.6,0},{0.72,0},{0.6,251},{0.72,78}}" />
             <Property name="Font" value="LemonMilk-50" />
             <Property name="Text" value="00:00" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
@@ -59,11 +53,8 @@
         <Window type="PayumLook/Button" name="Button2" >
             <Property name="Area" value="{{0.04,0},{0.3,0},{0.34,0},{0.43,0}}" />
         </Window>
-        <Window type="PayumLook/Button" name="Button3" >
-            <Property name="Area" value="{{0.04,0},{0.5,0},{0.34,0},{0.63,0}}" />
-        </Window>
         <Window type="PayumLook/Button" name="Button4" >
-            <Property name="Area" value="{{0.065,0},{0.7,0},{0.315,0},{0.83,0}}" />
+            <Property name="Area" value="{{0.065,0},{0.6,0},{0.315,0},{0.73,0}}" />
         </Window>
     </Window>
 </GUILayout>
