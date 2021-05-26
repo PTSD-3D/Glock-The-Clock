@@ -4,8 +4,8 @@ local LevelsSystem = ns.class("LevelsSystem",ns.System)
 
 local currentLevel = "sampleScene";
 
-local sampleSceneTime = "00:30";
-local level1Time = "00:60";
+local sampleSceneTime = "00:00";
+local level1Time = "00:00";
 
 function LevelsSystem:initialize()
 	ns.System.initialize(self)
@@ -15,25 +15,29 @@ function LevelsSystem:initialize()
 	Manager.eventManager:addListener("ChangeSceneEvent", self, self.onChangeLevel)
 end
 
+function LevelsSystem:sampleSceneInfo()
+	changeStaticImage("LevelImg","PayumLook/Level1")
+	changeStaticImage("Medal","PayumLook/2Medal")
+
+	changeText("LevelTime", sampleSceneTime)
+end
+
+function LevelsSystem:level1Info()
+	changeStaticImage("LevelImg","PayumLook/Level2")
+	changeStaticImage("Medal","PayumLook/1Medal")
+
+	changeText("LevelTime", level1Time)
+end
+
 function LevelsSystem:onSelectedLevel(event)
 	currentLevel = event.level;
 	if(currentLevel == "sampleScene") then
-		changeStaticImage("LevelImg","PayumLook/Level1")
-		changeStaticImage("Medal","PayumLook/1Medal")
-
-		changeText("LevelTime", sampleSceneTime)
+		self.sampleSceneInfo()
 	elseif (currentLevel == "Level1") then
-		changeStaticImage("LevelImg","PayumLook/Level2")
-		changeStaticImage("Medal","PayumLook/2Medal")
-
-		changeText("LevelTime", level1Time)
+		self.level1Info()
 	else
-		changeStaticImage("LevelImg","PayumLook/Level1")
-		changeStaticImage("Medal","PayumLook/1Medal")
-
-		changeText("LevelTime", sampleSceneTime)
+		self.sampleSceneInfo()
 	end
-
 end
 
 function LevelsSystem:onInitLevel()

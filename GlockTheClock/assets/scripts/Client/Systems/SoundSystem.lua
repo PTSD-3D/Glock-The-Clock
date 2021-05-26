@@ -40,8 +40,6 @@ function SoundSystem:setVolume(music)
 	setChannelVolume(music.channel, musicVolume)
 
 	setProgressBarValue("VolumePB", musicVolume)
-
-	LOG(tostring(musicVolume), LogLevel.Error, 0)
 end
 
 function SoundSystem:update(dt)
