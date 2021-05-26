@@ -197,11 +197,11 @@ function switchToSettingsMenu()
 end
 
 function volumeUp()
-	setProgressBarValue("VolumePB",0.5)
+	Manager.eventManager:fireEvent(ns.upVolumeEvent())
 end
 
 function volumeDown()
-	setProgressBarValue("VolumePB", 0.2);
+	Manager.eventManager:fireEvent(ns.downVolumeEvent())
 end
 
 function showLevel1Info()
