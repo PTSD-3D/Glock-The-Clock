@@ -13,6 +13,6 @@ function pf.Bullet(params)
 			scale={x=0.4,y=0.4,z=0.4}
 		},
 		Mesh = { mesh = "Bala.mesh", material = "BalaPayum" },
-		Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=0,trigger=true,rotation=params.Transform.rotation}
+		Rigidbody = {size={x=params.Transform.scale.x,y=params.Transform.scale.y,z=params.Transform.scale.z*10},mass=1,position=params.Transform.position,type=0,trigger=true,rotation=params.Transform.rotation}
 	}
 end
