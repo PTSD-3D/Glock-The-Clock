@@ -9,17 +9,18 @@ function MoveSystem:requires()
 end
 -- MoveSystem.camChild = false;
 
-function MoveSystem:Shoot(entity,dt)
-
-	print(entity)
-	local dest = getCamOrientation()
-	local offset = entity.Transform:getForward() * 25
-	local pos = entity.Transform.position - offset
+function MoveSystem:Shoot()
+	local dest = getCamDirection()
+	--local dest = vec3:new(self.player.Transform:getForward().x, getCamDirection().y, self.player.Transform:getForward().z)
+	--local offset = dest * 25
+	local pos = getCamPosition() --+ offset
+	local rot = getCamOrientation()
 
 	ns.spawnEntity(Manager,prefabs.Bullet({
 			Transform = {
-				position=pos,
-				rotation={x=0.0,y=0.0,z=0.0},
+				position=pos,	
+				--190 is to see the bullet model better, 180 just shows the back part of the bullet
+				rotation={x= 190 + rot.x, y = rot.y, z = 190 + rot.z},
 				scale={x=1,y= 1,z=1}
 			},
 			direction = dest
@@ -46,13 +47,11 @@ function MoveSystem:onAddEntity(entity)
 end
 function MoveSystem:update(dt)
 	if (self.player ~= nil) then
+
 		local tr = self.player.Transform
 		local rb = self.player.Rigidbody
 		local vel = self.player:get("playerMove").vel;
 		local vr = self.player:get("playerMove").vrot;
-		-- cameraSetPos(vec3:new(0,80,0))
-		-- cameraLookAt(vec3:new(0,0,1000))
-		--makes the camera transform child of the player transform
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
@@ -79,12 +78,13 @@ function MoveSystem:update(dt)
 
 		--making the velocity vector's magnitude equal to vel
 		local vtotal = dir:normalize() * vel
-
 		--making sure the jump isn't overwritten
 		vtotal.y = rb:getLinearVelocity().y
 
-		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
-		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
+		--Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
+		--the raycast checks the distance to the ground and the vtotal comparation is to avoid doing this two or three times per space press
+		--even though it doesn't change how the jump works, it would play the sound track multiple times
+		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0)) and vtotal.y <= 1) then
 			--adds the force of the jump
 			local force = vec3:new(0, self.player:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
@@ -93,7 +93,7 @@ function MoveSystem:update(dt)
 			local chan = playSound(resources.Sounds.Jump.id)
 			setChannelVolume(chan,1)
 
-			--this is only necessary because the player is on the void
+			--this is for safety, to avoid accumulating forces if the condition above goes wrong somehow
 			vtotal.y = 0
 		end
 
@@ -102,7 +102,7 @@ function MoveSystem:update(dt)
 			showPauseUI()
 		end
 		if keyJustPressed(PTSDKeys.H) or  mouseButtonJustPressed(PTSDMouseButton.Left) then
-			self:Shoot(self.player, dt)
+			self:Shoot()
 		end
 		rb:setLinearVelocity(vtotal)
 	end

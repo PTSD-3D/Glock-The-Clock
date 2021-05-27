@@ -5,7 +5,7 @@ function pf.Bullet(params)
 	return {
 		Components = {
 			-- Example user defined components
-			{ name = "bullet", arguments = {1,500,100, params.direction} }
+			{ name = "bullet", arguments = {1,1000,100, params.direction} }
 		},
 		Transform = { 
 			position= params.Transform.position,
