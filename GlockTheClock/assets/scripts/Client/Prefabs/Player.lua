@@ -7,7 +7,7 @@ function pf.Player(params)
 	return {
 		Components = {
 			-- Example user defined components
-			{ name = "playerMove", arguments = { 200, 0.1, 2000, 1000 } },
+			{ name = "playerMove", arguments = { 100, 0.1, 2000, 4 } },
 			{ name = "boombox", arguments={0.5, false, resources.Sounds.Level1Theme, -1}}
 		},
 		Transform = params.Transform,

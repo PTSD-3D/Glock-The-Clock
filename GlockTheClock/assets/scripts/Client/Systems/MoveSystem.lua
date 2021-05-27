@@ -56,7 +56,7 @@ function MoveSystem:update(dt)
 		local rb = self.player.Rigidbody
 		local vel = self.player:get("playerMove").vel
 		local vr = self.player:get("playerMove").vrot
-		local maxVelChange = self.player:get("playerMove").maxVelChange
+		local accel = self.player:get("playerMove").accel
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
@@ -81,33 +81,23 @@ function MoveSystem:update(dt)
 			dir = dir + tr:getRight()
 		end
 
+		--velChange becomes the force needed to get to vel speed taking into account where the body is headed (that makes it stop when no key is pressed)
+
 		--making the velocity vector's magnitude equal to vel
 		local vtotal = dir:normalize() * vel
 		local velChange = vtotal - rb:getLinearVelocity();
-		--clamp
-		if (velChange.x > maxVelChange) then
-			velChange.x = maxVelChange
-		elseif (velChange.x < -maxVelChange) then
-			velChange.x = -maxVelChange
-		end
-
-		if (velChange.z > maxVelChange) then
-			velChange.z = maxVelChange
-		elseif (velChange.z < -maxVelChange) then
-			velChange.z = -maxVelChange
-		end
 		velChange.y = 0;
-
+		
+		--the higher accel is, the less it takes to get to vel speed while pressing a key
+		--and the less it takes to become still when there is no key pressed
+		velChange = velChange * accel
 		rb:addForce(velChange, vec3:new(0,0 ,0))
 
-
-
-		--making sure the jump isn't overwritten
-		--vtotal.y = rb:getLinearVelocity().y
 
 		--Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
 		--the raycast checks the distance to the ground and the vtotal comparation is to avoid doing this two or three times per space press
 		--even though it doesn't change how the jump works, it would play the sound track multiple times
+
 		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0)) and rb:getLinearVelocity().y <= 1) then
 			--adds the force of the jump
 			local force = vec3:new(0, self.player:get("playerMove").jump, 0)
@@ -115,9 +105,6 @@ function MoveSystem:update(dt)
 			
 			local chan = playSound(resources.Sounds.Jump.id)
 			setChannelVolume(chan,1)
-
-			--this is for safety, to avoid accumulating forces if the condition above goes wrong somehow
-			vtotal.y = 0
 		end
 
 		if keyPressed(PTSDKeys.P) then
@@ -127,7 +114,6 @@ function MoveSystem:update(dt)
 		if keyJustPressed(PTSDKeys.H) or  mouseButtonJustPressed(PTSDMouseButton.Left) then
 			self:Shoot()
 		end
-		--rb:setLinearVelocity(vtotal)
 	end
 end
 
