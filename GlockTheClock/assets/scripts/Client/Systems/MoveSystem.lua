@@ -98,6 +98,7 @@ function MoveSystem:update(dt)
 		end
 
 		if keyPressed(PTSDKeys.P) then
+			hideHUD()
 			showPauseUI()
 		end
 		if keyJustPressed(PTSDKeys.H) or  mouseButtonJustPressed(PTSDMouseButton.Left) then

@@ -2,3 +2,8 @@
 
 require('DeathEvent')
 require('GoalEvent')
+require('SelectLevelEvent')
+require('InitLevelEvent')
+require('SaveTimeLevelEvent')
+require('DownVolumeEvent')
+require('UpVolumeEvent')

@@ -8,6 +8,8 @@
             <Property name="Area" value="{{0,0},{0,0},{0,1920},{0,1080}}" />
             <Property name="Image" value="PayumLookBackground/Bg" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="TaharezLook/StaticText" name="SettingsTitle" >
             <Property name="Area" value="{{0.38,0},{0.01,0},{0.38,310},{0.01,108}}" />
