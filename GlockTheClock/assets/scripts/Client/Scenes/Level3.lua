@@ -101,7 +101,7 @@ local Scene={
 
 	Star_000=prefabs.Star({
 		Transform = {position={x=23,y=18.2,z=4},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=3.0}},
-		targetCollision = {points = 10},
+		targetCollision = {points = 250},
 	})},
 		
 		SceneConfig=
