@@ -72,27 +72,27 @@ local Scene={
 	}),
 	BlueTarget_016=prefabs.BlueTarget({
 		Transform = {position={x=30.839876174926758,y=26.45348358154297,z=61.99794006347656},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
-		targetCollision = {points = 10},
+		targetCollision = {points = 30},
 		targetMove = {range = {10,10,0}, rotation = {0,0,0}, speed = {-55,-55,0}, trig = {"cos", "sin", "sin"}},
 	}),
 	BlueTarget_017=prefabs.BlueTarget({
 		Transform = {position={x=4.0,y=33.68098068237305,z=61.99794006347656},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
-		targetCollision = {points = 10},
+		targetCollision = {points = 30},
 		targetMove = {range = {10,10,0}, rotation = {0,0,0}, speed = {55,55,0}, trig = {"cos", "sin", "sin"}},
 	}),
 	BlueTarget_001=prefabs.BlueTarget({
 		Transform = {position={x=60.47148132324219,y=28.204418182373047,z=-30.309322357177734},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
-		targetCollision = {points = 10},
+		targetCollision = {points = 30},
 		targetMove = {range = {10,10,0}, rotation = {0,60,0}, speed = {0,0,0}, trig = {"cos", "sin", "sin"}},
 	}),
 	BlueTarget_002=prefabs.BlueTarget({
 		Transform = {position={x=20.30221176147461,y=28.204418182373047,z=-30.660968780517578},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
-		targetCollision = {points = 10},
+		targetCollision = {points = 30},
 		targetMove = {range = {10,10,0}, rotation = {0,60,0}, speed = {0,0,0}, trig = {"cos", "sin", "sin"}},
 	}),
 	BlueTarget_007=prefabs.BlueTarget({
 		Transform = {position={x=-188.00662231445312,y=-25.148845672607422,z=87.65418243408203},rotation={x=-0.0,y=-76.51781013951995,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
-		targetCollision = {points = 10},
+		targetCollision = {points = 30},
 		targetMove = {range = {10,10,0}, rotation = {0,60,0}, speed = {0,20,0}, trig = {"cos", "sin", "sin"}},
 	}),
 
