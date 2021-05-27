@@ -5,7 +5,7 @@ local ns = require('namespace')
 
 LOG("Loading components...", LogLevel.Info, 1)
 
-ns.Component.create("playerMove",{"vel","vrot","jump"})
+ns.Component.create("playerMove",{"vel","vrot","jump", "accel"})
 ns.Component.create("boombox",{"volume","isPlaying","sound","channel"})
 ns.Component.create("topo")
 ns.Component.create("floor")
