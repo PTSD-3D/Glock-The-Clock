@@ -45,7 +45,7 @@ function MoveSystem:onAddEntity(entity)
 		LOG("OOPSIE There are multiple players",LogLevel.Warning,1)
 	else
 		self.player = entity
-		self.player.Transform:setChildCamera()
+		self.player.Transform:setChildCamera(vec3:new(0, 10, -2))
 		LOG("Player detected",LogLevel.Info,1)
 	end
 end
