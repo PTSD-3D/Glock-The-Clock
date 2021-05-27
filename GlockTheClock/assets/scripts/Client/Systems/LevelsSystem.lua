@@ -23,9 +23,9 @@ end
 function LevelsSystem:level1Info()
 	changeStaticImage("LevelImg","PayumLook/Level1")
 
-	if(level1Mins >= 3 or (level1Mins == 0 and level1Secs == 0)) then
+	if(level1Mins >= 1 or (level1Mins == 0 and level1Secs == 0)) then
 		changeStaticImage("Medal","PayumLook/3Medal")
-	elseif(level1Mins >= 1) then
+	elseif(level1Secs > 30) then
 		changeStaticImage("Medal","PayumLook/2Medal")
 	else
 		changeStaticImage("Medal","PayumLook/1Medal")
@@ -50,9 +50,9 @@ end
 function LevelsSystem:level2Info()
 	changeStaticImage("LevelImg","PayumLook/Level2")
 
-	if(level2Mins >= 3 or (level2Mins == 0 and level2Secs == 0)) then
+	if(level2Mins >= 1 or (level2Mins == 0 and level2Secs == 0)) then
 		changeStaticImage("Medal","PayumLook/3Medal")
-	elseif(level2Mins >= 1) then
+	elseif(level2Secs > 30) then
 		changeStaticImage("Medal","PayumLook/2Medal")
 	else
 		changeStaticImage("Medal","PayumLook/1Medal")
@@ -77,9 +77,9 @@ end
 function LevelsSystem:level3Info()
 	changeStaticImage("LevelImg","PayumLook/Level3")
 
-	if(level3Mins >= 3 or (level3Mins == 0 and level3Secs == 0)) then
+	if(level3Mins >= 1 or (level3Mins == 0 and level3Secs == 0)) then
 		changeStaticImage("Medal","PayumLook/3Medal")
-	elseif(level3Mins >= 1) then
+	elseif(level3Secs > 30) then
 		changeStaticImage("Medal","PayumLook/2Medal")
 	else
 		changeStaticImage("Medal","PayumLook/1Medal")
