@@ -34,6 +34,10 @@ function MoveSystem:initialize()
 end
 function MoveSystem:handleChangeScene(ev)
 	self.player = nil;
+	if(ev.newSceneName == "MainMenuScene") then
+		showMainMenuUI()
+		hideHUD()
+	end
 end
 function MoveSystem:onAddEntity(entity)
 	-- make sure theres only one
