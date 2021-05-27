@@ -37,11 +37,15 @@ function createLevelSelectorUIButtons()
 	createButton("Level2Button", "Level 2", "PayumLook/Button", "LemonMilk-41", vec2:new(0.04, 0.3), vec2:new(0.3, 0.13))
 	setButtonFunction("Level2Button","showLevel2Info")
 
-	createButton("PlayButton", "Play", "PayumLook/Button", "LemonMilk-41", vec2:new(0.065, 0.6), vec2:new(0.25, 0.13))
+	createButton("Level3Button", "Level 3", "PayumLook/Button", "LemonMilk-41", vec2:new(0.04, 0.5), vec2:new(0.3, 0.13))
+	setButtonFunction("Level3Button","showLevel3Info")
+	
+	createButton("PlayButton", "Play", "PayumLook/Button", "LemonMilk-41", vec2:new(0.065, 0.7), vec2:new(0.25, 0.13))
 	setButtonFunction("PlayButton","switchToLevel")
 
 	setWindowVisible("Level1Button", false)
 	setWindowVisible("Level2Button", false)
+	setWindowVisible("Level3Button", false)
 
 	setWindowVisible("PlayButton", false)
 end
@@ -51,7 +55,7 @@ function showLevelSelectorUI()
 
 	setWindowVisible("Level1Button", true)
 	setWindowVisible("Level2Button", true)
-	-- setWindowVisible("Level3Button", true)
+	setWindowVisible("Level3Button", true)
 	setWindowVisible("PlayButton", true)
 end
 
@@ -60,7 +64,7 @@ function hideLevelSelectorUI()
 
 	setWindowVisible("Level1Button", false)
 	setWindowVisible("Level2Button", false)
-	-- setWindowVisible("Level3Button", false)
+	setWindowVisible("Level3Button", false)
 	setWindowVisible("PlayButton", false)
 
 	setUIMouseCursorVisible(false)
@@ -205,9 +209,13 @@ function volumeDown()
 end
 
 function showLevel1Info()
-	Manager.eventManager:fireEvent(ns.selectLevelEvent("sampleScene"))
+	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level1"))
 end
 
 function showLevel2Info()
-	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level1"))
+	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level2"))
+end
+
+function showLevel3Info()
+	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level3"))
 end

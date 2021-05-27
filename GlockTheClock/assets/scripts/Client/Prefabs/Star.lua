@@ -5,6 +5,7 @@ function pf.Star (params)
 	return{
 		Components = {
 			--Example user defined components
+			{ name = "targetCollision", arguments={params.targetCollision.points}}
 		},
 		Transform = params.Transform,
 		Mesh = {mesh="Star.mesh", material="Coleccionable"},
