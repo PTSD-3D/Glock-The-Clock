@@ -12,6 +12,6 @@ function pf.Player(params)
 		},
 		Transform = params.Transform,
         Rigidbody = {size={x=1,y=1,z=1},mass=1,position={x=0,y=0,z=0},type=0,trigger=false,rotation={x=0,y=0,z=0,w=1}},
-	    Mesh = { mesh = "Cube.mesh", material = "body" }
+	    Mesh = { mesh = "Cube.mesh", material = "TransparentMat" }
 	}
 end
