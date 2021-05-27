@@ -43,33 +43,43 @@ local Scene={
 		Transform = {position={x=36.17743682861328,y=18.09440040588379,z=-5.510189056396484},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
 	}),
-	RedTarget_003=prefabs.RedTarget({
+
+	BlueTarget_003=prefabs.BlueTarget({
 		Transform = {position={x=-24.918935775756836,y=23.818458557128906,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
+		targetMove = {range = {10,5,0}, rotation = {0,40,0}, speed = {0,20,0}, trig = {"cos", "sin", "sin"}},
 	}),
-	RedTarget_004=prefabs.RedTarget({
+	BlueTarget_004=prefabs.BlueTarget({
 		Transform = {position={x=-34.626441955566406,y=29.45375633239746,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
+		targetMove = {range = {10,5,0}, rotation = {0,40,0}, speed = {0,40,0}, trig = {"cos", "sin", "sin"}},	
 	}),
-	RedTarget_005=prefabs.RedTarget({
+	BlueTarget_005=prefabs.BlueTarget({
 		Transform = {position={x=-43.466041564941406,y=23.465904235839844,z=26.3292236328125},rotation={x=-0.0,y=-90.00000250447816,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
+		targetMove = {range = {10,5,0}, rotation = {0,40,0}, speed = {0,60,0}, trig = {"cos", "sin", "sin"}},
 	}),
-	RedTarget_006=prefabs.RedTarget({
+
+	BlueTarget_006=prefabs.BlueTarget({
 		Transform = {position={x=-88.04823303222656,y=30.256906509399414,z=83.13591003417969},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
+		targetMove = {range = {8,8,0}, rotation = {0,0,0}, speed = {40,40,0}, trig = {"cos", "sin", "sin"}},
 	}),
-	RedTarget_007=prefabs.RedTarget({
+	BlueTarget_007=prefabs.BlueTarget({
 		Transform = {position={x=-88.04823303222656,y=36.74729919433594,z=97.96111297607422},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
+		targetMove = {range = {10,10,0}, rotation = {0,0,0}, speed = {50,50,0}, trig = {"cos", "sin", "sin"}},
 	}),
-	RedTarget_008=prefabs.RedTarget({
-		Transform = {position={x=-88.04823303222656,y=10.276958465576172,z=140.86590576171875},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
-		targetCollision = {points = 10},
-	}),
-	RedTarget_009=prefabs.RedTarget({
+	BlueTarget_009=prefabs.BlueTarget({
 		Transform = {position={x=-88.04823303222656,y=29.6544246673584,z=112.58760070800781},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
 		targetCollision = {points = 10},
+		targetMove = {range = {15,15,0}, rotation = {0,0,0}, speed = {60,60,0}, trig = {"cos", "sin", "sin"}},
+	}),
+
+	BlueTarget_008=prefabs.BlueTarget({
+		Transform = {position={x=-88.04823303222656,y=10.276958465576172,z=140.86590576171875},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
+		targetCollision = {points = 10},
+		targetMove = {range = {3,8,0}, rotation = {0,60,0}, speed = {15,40,0}, trig = {"cos", "sin", "sin"}},
 	}),
 	RedTarget_010=prefabs.RedTarget({
 		Transform = {position={x=40.751678466796875,y=18.09440040588379,z=20.259967803955078},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=0.5}},
