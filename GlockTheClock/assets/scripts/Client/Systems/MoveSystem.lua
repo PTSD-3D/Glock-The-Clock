@@ -12,8 +12,8 @@ end
 function MoveSystem:Shoot()
 	local dest = getCamDirection()
 	--local dest = vec3:new(self.player.Transform:getForward().x, getCamDirection().y, self.player.Transform:getForward().z)
-	local offset = dest * 25
-	local pos = getCamPosition() + offset
+	--local offset = dest * 25
+	local pos = getCamPosition() --+ offset
 	local rot = getCamOrientation()
 
 	ns.spawnEntity(Manager,prefabs.Bullet({
