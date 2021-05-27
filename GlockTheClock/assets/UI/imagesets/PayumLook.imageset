@@ -14,5 +14,6 @@
     <Image height="135" name="ButtonLArrow2" width="119" xPos="1005" yPos="320" />
     <Image height="135" name="ButtonRArrow2" width="119" xPos="1141" yPos="320" />
     <Image height="230" name="Level2" width="409" xPos="860" yPos="483" />
-    <Image height="202" name="Level3" width="387" xPos="22" yPos="499" />
+    <Image height="228" name="Level3" width="407" xPos="15" yPos="483" />
+    <Image height="14" name="CrossHair" width="14" xPos="275" yPos="235" />
 </Imageset>
