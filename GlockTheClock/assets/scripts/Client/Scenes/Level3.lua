@@ -4,7 +4,7 @@ local Scene={
  Entities={	DeadZone_000=prefabs.DeadZone({
 		Transform = {position={x=-80.00550842285156,y=-82.47428894042969,z=53.89710235595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=239.62814331054688,y=2.7058236598968506,z=239.62814331054688}}}),
 	Goal=prefabs.Goal({
-		Transform = {position={x=-205.64573669433594,y=-32.50431442260742,z=103.6405029296875},rotation={x=-0.0,y=17.96889923450998,z=-0.0},scale={x=3.0,y=3.0,z=3.0}},
+		Transform = {position={x=-205.64573669433594,y=-34,z=103.6405029296875},rotation={x=-0.0,y=17.96889923450998,z=-0.0},scale={x=3.0,y=3.0,z=3.0}},
 		nextScene="MainMenuScene"
 	}),
 	
