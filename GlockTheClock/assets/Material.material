@@ -51,6 +51,15 @@ material Yellow{
 	}
 }
 
+material TransparentMat{
+    technique{
+        pass{
+            diffuse 0 0 0 0
+            scene_blend alpha_blend
+        }
+    }
+}
+
 material Coleccionable {
     receive_shadows on
     technique {
@@ -84,6 +93,7 @@ material Skybox{
     {
        pass
         {
+            lighting off
           texture_unit
           {
             texture skybox.bmp cubic
