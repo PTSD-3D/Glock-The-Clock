@@ -209,5 +209,5 @@ function showLevel1Info()
 end
 
 function showLevel2Info()
-	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level1"))
+	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level2"))
 end
