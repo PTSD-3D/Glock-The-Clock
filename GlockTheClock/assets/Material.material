@@ -78,3 +78,16 @@ material Coleccionable {
         }
     }
 }
+
+material Skybox{
+	technique
+    {
+       pass
+        {
+          texture_unit
+          {
+            texture skybox.bmp cubic
+          }
+       }   
+    }
+}
