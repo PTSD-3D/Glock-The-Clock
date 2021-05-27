@@ -19,7 +19,7 @@ function TimerSystem:initialize()
 end
 
 function TimerSystem:saveTime()
-	Manager.eventManager:fireEvent(ns.saveTimeLevelEvent(currentTime))
+	Manager.eventManager:fireEvent(ns.saveTimeLevelEvent(timeMinutes, timeSeconds))
 	self.resetTimer()
 end
 
