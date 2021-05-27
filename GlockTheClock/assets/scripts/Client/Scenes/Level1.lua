@@ -5,7 +5,7 @@ local Scene={
 		Transform = {position={x=-34.03219223022461,y=-82.47428894042969,z=53.89710235595703},rotation={x=-0.0,y=0.0,z=0.0},scale={x=239.62814331054688,y=2.7058236598968506,z=239.62814331054688}}}),
 	Goal=prefabs.Goal({
 		Transform = {position={x=-87.77423858642578,y=9.129749298095703,z=164.6969757080078},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.0,y=3.0,z=3.0}},
-		nextScene="sampleScene"
+		nextScene="MainMenuScene"
 	}),
 	Platform_000=prefabs.Platform({
 		Transform = {position={x=40.57072448730469,y=5.99833869934082,z=-19.997583389282227},rotation={x=-0.0,y=0.0,z=0.0},scale={x=12.153708457946777,y=7.076155662536621,z=61.460819244384766}}
