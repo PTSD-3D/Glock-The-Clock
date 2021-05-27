@@ -19,7 +19,7 @@ function TargetCollisionSystem:resetScore()
 end
 
 function TargetCollisionSystem:onCollision(target, other, collision)
-	if(other:has("bullet") or other:has("playerMove")) then	--The player can break the targets with his body too
+	if(other:has("bullet")) then	
 		local targetCollision = target:get("targetCollision")
 		Manager:removeEntity(target)
 
