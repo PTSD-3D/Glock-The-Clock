@@ -9,17 +9,18 @@ function MoveSystem:requires()
 end
 -- MoveSystem.camChild = false;
 
-function MoveSystem:Shoot(entity,dt)
-
-	print(entity)
-	local dest = getCamOrientation()
-	local offset = entity.Transform:getForward() * 25
-	local pos = entity.Transform.position - offset
+function MoveSystem:Shoot()
+	local dest = getCamDirection()
+	--local dest = vec3:new(self.player.Transform:getForward().x, getCamDirection().y, self.player.Transform:getForward().z)
+	local offset = dest * 25
+	local pos = getCamPosition() + offset
+	local rot = getCamOrientation()
 
 	ns.spawnEntity(Manager,prefabs.Bullet({
 			Transform = {
-				position=pos,
-				rotation={x=0.0,y=0.0,z=0.0},
+				position=pos,	
+				--190 is to see the bullet model better, 180 just shows the back part of the bullet
+				rotation={x= 190 + rot.x, y = rot.y, z = 190 + rot.z},
 				scale={x=1,y= 1,z=1}
 			},
 			direction = dest
@@ -46,13 +47,11 @@ function MoveSystem:onAddEntity(entity)
 end
 function MoveSystem:update(dt)
 	if (self.player ~= nil) then
+
 		local tr = self.player.Transform
 		local rb = self.player.Rigidbody
 		local vel = self.player:get("playerMove").vel;
 		local vr = self.player:get("playerMove").vrot;
-		-- cameraSetPos(vec3:new(0,80,0))
-		-- cameraLookAt(vec3:new(0,0,1000))
-		--makes the camera transform child of the player transform
 
 		--rotation + camera
 		local mouseDirection = getMouseRelativePosition()
@@ -79,7 +78,6 @@ function MoveSystem:update(dt)
 
 		--making the velocity vector's magnitude equal to vel
 		local vtotal = dir:normalize() * vel
-
 		--making sure the jump isn't overwritten
 		vtotal.y = rb:getLinearVelocity().y
 
@@ -102,7 +100,7 @@ function MoveSystem:update(dt)
 			showPauseUI()
 		end
 		if keyJustPressed(PTSDKeys.H) or  mouseButtonJustPressed(PTSDMouseButton.Left) then
-			self:Shoot(self.player, dt)
+			self:Shoot()
 		end
 		rb:setLinearVelocity(vtotal)
 	end
