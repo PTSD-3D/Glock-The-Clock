@@ -81,8 +81,10 @@ function MoveSystem:update(dt)
 		--making sure the jump isn't overwritten
 		vtotal.y = rb:getLinearVelocity().y
 
-		--if rb:isgrounded()		Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
-		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0))) then
+		--Needs to check if the rb is on the ground, we can use a downwards raycast or the collision normals to see if it's the ground
+		--the raycast checks the distance to the ground and the vtotal comparation is to avoid doing this two or three times per space press
+		--even though it doesn't change how the jump works, it would play the sound track multiple times
+		if (keyPressed(PTSDKeys.Space) and rb:hasRayCastHit(vec3:new(0, -2, 0)) and vtotal.y <= 1) then
 			--adds the force of the jump
 			local force = vec3:new(0, self.player:get("playerMove").jump, 0)
 			local ref = vec3:new(0, 0, 0)
@@ -91,7 +93,7 @@ function MoveSystem:update(dt)
 			local chan = playSound(resources.Sounds.Jump.id)
 			setChannelVolume(chan,1)
 
-			--this is only necessary because the player is on the void
+			--this is for safety, to avoid accumulating forces if the condition above goes wrong somehow
 			vtotal.y = 0
 		end
 
