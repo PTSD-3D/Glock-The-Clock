@@ -6,14 +6,23 @@ local timeTicks = 0
 local timeSeconds = 0
 local timeMinutes = 0
 
+local currentTime = "";
+
 local stopped = false
 
 
 function TimerSystem:initialize()
 	ns.System.initialize(self)
 
-	Manager.eventManager:addListener("ChangeSceneEvent", self, self.resetTimer)
+	Manager.eventManager:addListener("initLevelEvent", self, self.resetTimer)
+	Manager.eventManager:addListener("goalEvent", self, self.saveTime)
 end
+
+function TimerSystem:saveTime()
+	Manager.eventManager:fireEvent(ns.saveTimeLevelEvent(currentTime))
+	self.resetTimer()
+end
+
 
 function TimerSystem:resetTimer()
 	timeTicks = 0
@@ -39,7 +48,9 @@ function TimerSystem:updateUI()
 
 	secs = secs .. tostring(timeSeconds)
 	mins = mins .. tostring(timeMinutes)
-	changeText("Counter", mins .. ":" .. secs)
+
+	currentTime = mins .. ":" .. secs
+	changeText("Counter", currentTime)
 end
 
 function TimerSystem:update(dt)

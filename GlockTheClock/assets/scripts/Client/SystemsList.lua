@@ -11,5 +11,6 @@ require('SoundSystem')
 require('GoalSystem')
 require('BulletSystem') --Currently not used
 require('TimerSystem')
+require('LevelsSystem')
 
 LOG("Systems load completed", LogLevel.Info, 1)

@@ -26,17 +26,17 @@
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
         </Window>
-        <Window type="TaharezLook/StaticText" name="Targets" >
-            <Property name="Area" value="{{0.9,0},{0.14,0},{0.9,102},{0.14,67}}" />
+        <Window type="TaharezLook/StaticText" name="Score" >
+            <Property name="Area" value="{{0.8,0},{0.14,0},{1,0},{0.24,0}}" />
             <Property name="Font" value="LemonMilk-32" />
-            <Property name="Text" value="0/12" />
+            <Property name="Text" value="Score: 0" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="TextColours" value="tl:FFFFFFFF tr:FFFFFFFF bl:FFFF0000 br:FFFF0000" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
-            <Property name="HorzScrollPageSize" value="102" />
-            <Property name="VertScrollPageSize" value="67" />
-            <Property name="HorzScrollDocumentSize" value="95" />
+            <Property name="HorzScrollPageSize" value="256" />
+            <Property name="VertScrollPageSize" value="72" />
+            <Property name="HorzScrollDocumentSize" value="198" />
             <Property name="VertScrollDocumentSize" value="43.6512" />
         </Window>
     </Window>

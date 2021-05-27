@@ -8,6 +8,8 @@
             <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
             <Property name="Image" value="PayumLookBackground/Bg" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="TaharezLook/StaticText" name="GlockTheClockTitle" >
             <Property name="Area" value="{{0.26,0},{0.01,0},{0.26,622},{0.01,108}}" />
@@ -24,10 +26,7 @@
             <Property name="VertScrollDocumentSize" value="68.2019" />
         </Window>
         <Window type="PayumLook/Button" name="Button" >
-            <Property name="Area" value="{{0.35,0},{0.25,0},{0.65,0},{0.38,0}}" />
-        </Window>
-        <Window type="PayumLook/Button" name="Button2" >
-            <Property name="Area" value="{{0.35,0},{0.45,0},{0.65,0},{0.58,0}}" />
+            <Property name="Area" value="{{0.35,0},{0.33,0},{0.65,0},{0.46,0}}" />
         </Window>
         <Window type="PayumLook/Button" name="Button3" >
             <Property name="Area" value="{{0.35,0},{0.65,0},{0.65,0},{0.78,0}}" />
