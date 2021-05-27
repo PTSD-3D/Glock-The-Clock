@@ -205,7 +205,7 @@ function volumeDown()
 end
 
 function showLevel1Info()
-	Manager.eventManager:fireEvent(ns.selectLevelEvent("sampleScene"))
+	Manager.eventManager:fireEvent(ns.selectLevelEvent("Level1"))
 end
 
 function showLevel2Info()
