@@ -98,7 +98,9 @@ local Scene={
 		}
 	}),
 	Star_000=prefabs.Star({
-		Transform = {position={x=-26.47929573059082,y=6.011415004730225,z=35.112457275390625},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.004072904586792,y=3.004072904586792,z=3.004072904586792}}})},
+		Transform = {position={x=-26.47929573059082,y=6.011415004730225,z=35.112457275390625},rotation={x=-0.0,y=0.0,z=0.0},scale={x=3.004072904586792,y=3.004072904586792,z=3.004072904586792}},
+		targetCollision = {points = 250},
+	})},
 		SceneConfig=
         {
         PhysicsConfig={
