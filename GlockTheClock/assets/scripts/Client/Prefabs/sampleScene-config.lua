@@ -11,7 +11,7 @@ function sceneConfig.sampleScene()
 			Skybox = {
 				type = 1, --ns.SkyboxTypes.Skybox
 				enable = true,
-				material = "KirbyMat",
+				material = "Skybox",
 				distance = 300
 			}
 		}

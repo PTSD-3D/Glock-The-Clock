@@ -8,7 +8,7 @@ function pf.DeadZone(params)
 			{ name = "death", arguments = {true} }
 		},
 		Transform = params.Transform,
-		Mesh = {mesh="Cube.mesh", material="Yellow"},
+		Mesh = {mesh="Cube.mesh", material="TransparentMat"},
 		Rigidbody = {size=params.Transform.scale,mass=1,position=params.Transform.position,type=2,trigger=true,rotation=params.Transform.rotation}
 	}
 end
